@@ -11,9 +11,11 @@ import {
 } from '../components/ui/card';
 import { Input } from '../components/ui/input';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export function Login() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleLogin = () => {
     navigate('/');
@@ -22,19 +24,17 @@ export function Login() {
   return (
     <Card className='w-full max-w-sm'>
       <CardHeader>
-        <CardTitle>Faça login em sua conta</CardTitle>
-        <CardDescription>
-          Insira suas credenciais para continuar
-        </CardDescription>
+        <CardTitle>{t('login.title')}</CardTitle>
+        <CardDescription>{t('login.description')}</CardDescription>
         <CardAction>
-          <Button variant='link'>Cadastrar</Button>
+          <Button variant='link'>{t('login.register')}</Button>
         </CardAction>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleLogin}>
           <div className='flex flex-col gap-6'>
             <div className='grid gap-2'>
-              <Label htmlFor='email'>Email</Label>
+              <Label htmlFor='email'>{t('login.email')}</Label>
               <Input
                 id='email'
                 type='email'
@@ -44,22 +44,27 @@ export function Login() {
             </div>
             <div className='grid gap-2'>
               <div className='flex items-center'>
-                <Label htmlFor='password'>Senha</Label>
+                <Label htmlFor='password'>{t('login.password')}</Label>
                 <a
                   href='#'
                   className='ml-auto inline-block text-sm underline-offset-4 hover:underline'
                 >
-                  Esqueceu sua senha?
+                  {t('login.forgotPassword')}
                 </a>
               </div>
-              <Input id='password' type='password' required></Input>
+              <Input
+                id='password'
+                type='password'
+                placeholder='*******'
+                required
+              ></Input>
             </div>
           </div>
         </form>
       </CardContent>
       <CardFooter className='flex-col gap-2'>
         <Button onClick={handleLogin} className='w-full'>
-          Login
+          {t('login.loginButton')}
         </Button>
       </CardFooter>
     </Card>

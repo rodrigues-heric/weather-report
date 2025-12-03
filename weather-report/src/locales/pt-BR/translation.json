@@ -1,0 +1,24 @@
+{
+  "language": {
+    "language": "Idioma",
+    "selectLanguage": "Selecionar Idioma",
+    "english": "Inglês",
+    "portuguese": "Português",
+    "noResults": "Nenhum resultado encontrado."
+  },
+  "login": {
+    "title": "Login na Sua Conta",
+    "description": "Por favor, insira suas credenciais para acessar sua conta",
+    "email": "Email",
+    "password": "Senha",
+    "submit": "Entrar",
+    "forgotPassword": "Esqueceu a Senha?",
+    "register": "Cadastrar",
+    "loginButton": "Entrar"
+  },
+  "mode": {
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema"
+  }
+}
