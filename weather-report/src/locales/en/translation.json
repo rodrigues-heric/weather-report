@@ -10,6 +10,7 @@
     "title": "Login to Your Account",
     "description": "Please enter your credentials to access your account",
     "email": "Email",
+    "emailPlaceholder": "user@example.com",
     "password": "Password",
     "submit": "Login",
     "forgotPassword": "Forgot Password?",

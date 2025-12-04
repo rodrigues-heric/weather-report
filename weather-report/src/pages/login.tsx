@@ -38,7 +38,7 @@ export function Login() {
               <Input
                 id='email'
                 type='email'
-                placeholder='u@exemplo.com'
+                placeholder={t('login.emailPlaceholder')}
                 required
               ></Input>
             </div>
