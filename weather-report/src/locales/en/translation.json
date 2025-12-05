@@ -48,5 +48,14 @@
   "search": {
     "placeholder": "Search city...",
     "buttonSearch": "Search"
+  },
+  "weather": {
+    "feelsLike": "Feels Like",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "pressure": "Pressure",
+    "uvIndex": "UV Index",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset"
   }
 }

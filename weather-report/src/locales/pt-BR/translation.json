@@ -48,5 +48,14 @@
   "search": {
     "placeholder": "Pesquisar cidade...",
     "buttonSearch": "Pesquisar"
+  },
+  "weather": {
+    "feelsLike": "Sensação Térmica",
+    "humidity": "Umidade",
+    "wind": "Vento",
+    "pressure": "Pressão",
+    "uvIndex": "Índice UV",
+    "sunrise": "Nascer do Sol",
+    "sunset": "Pôr do Sol"
   }
 }

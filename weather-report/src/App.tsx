@@ -22,13 +22,13 @@ const router = createBrowserRouter(
 export default function App() {
   return (
     <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
-      <div className='min-h-screen flex flex-col p-4'>
-        <header className='flex justify-between items-center mb-4'>
+      <div className='flex flex-col p-4'>
+        <header className='mb-4 flex items-center justify-between'>
           <LanguageSelector />
           <ModeToggle />
         </header>
 
-        <main className='flex-1 flex'>
+        <main className='flex'>
           <RouterProvider router={router} />
         </main>
       </div>
