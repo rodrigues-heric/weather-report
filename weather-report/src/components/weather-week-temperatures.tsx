@@ -1,16 +1,17 @@
 import { Card } from './card';
 import { CardContent } from './card-content';
 import { CardHeader } from './card-header';
+import { Sun, CloudRain, Wind } from 'lucide-react';
 
 // MOCK
 const dailyData = [
-  { day: 'Seg', min: 18, max: 26, condition: 'Sol' },
-  { day: 'Ter', min: 19, max: 28, condition: 'Nublado' },
-  { day: 'Qua', min: 20, max: 25, condition: 'Chuva' },
-  { day: 'Qui', min: 17, max: 22, condition: 'Vento' },
-  { day: 'Sex', min: 16, max: 24, condition: 'Sol' },
-  { day: 'Sáb', min: 18, max: 27, condition: 'Sol' },
-  { day: 'Dom', min: 19, max: 29, condition: 'Quente' },
+  { day: 'Seg', min: 18, max: 26, icon: <Sun size={18} /> },
+  { day: 'Ter', min: 19, max: 28, icon: <CloudRain size={18} /> },
+  { day: 'Qua', min: 20, max: 25, icon: <CloudRain size={18} /> },
+  { day: 'Qui', min: 17, max: 22, icon: <Wind size={18} /> },
+  { day: 'Sex', min: 16, max: 24, icon: <Sun size={18} /> },
+  { day: 'Sáb', min: 18, max: 27, icon: <Sun size={18} /> },
+  { day: 'Dom', min: 19, max: 29, icon: <Sun size={18} /> },
 ];
 
 export function WeatherWeekTemperatures() {
@@ -25,8 +26,8 @@ export function WeatherWeekTemperatures() {
           >
             <span className='w-12 font-medium'>{day.day}</span>
             <div className='flex flex-1 items-center gap-2 px-4'>
-              <span className='text-muted-foreground text-xs'>
-                {day.condition}
+              <span className='text-muted-foreground mr-4 text-xs'>
+                {day.icon}
               </span>
               <div className='bg-secondary h-1.5 flex-1 overflow-hidden rounded-full'>
                 <div
