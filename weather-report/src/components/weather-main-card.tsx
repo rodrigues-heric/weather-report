@@ -1,13 +1,14 @@
 import { Sun, ArrowDown, ArrowUp } from 'lucide-react';
 import { Card } from './card';
 import { CardContent } from './card-content';
+import { useTranslation } from 'react-i18next';
 
 // MOCK
 const currentData = {
   city: 'Porto Alegre',
   state: 'RS',
   temp: 24,
-  condition: 'Parcialmente Nublado',
+  condition: 'partiallyCloudy',
   min: 18,
   max: 28,
   feelsLike: 26,
@@ -24,6 +25,8 @@ const currentData = {
 };
 
 export function WeatherMainCard() {
+  const { t } = useTranslation();
+
   return (
     <section className='space-y-6 lg:col-span-3'>
       <Card className='from-primary/10 to-background border-primary/20 h-full bg-linear-to-b'>
@@ -36,7 +39,7 @@ export function WeatherMainCard() {
               {currentData.temp}°
             </h1>
             <p className='text-muted-foreground mt-2 text-xl font-medium'>
-              {currentData.condition}
+              {t(`weatherConditions.${currentData.condition}`)}
             </p>
           </div>
 

@@ -2,6 +2,7 @@ import { ClockIcon, Sun, CloudRain, Wind, Moon } from 'lucide-react';
 import { Card } from './card';
 import { CardHeader } from './card-header';
 import { CardContent } from './card-content';
+import { useTranslation } from 'react-i18next';
 
 // MOCK
 const hourlyForecast = [
@@ -16,10 +17,12 @@ const hourlyForecast = [
 ];
 
 export function WeatherHourly() {
+  const { t } = useTranslation();
+
   return (
     <div className='grid grid-cols-1 gap-6 md:grid-cols-3'>
       <Card className='md:col-span-3'>
-        <CardHeader title='Previsão por Hora' icon={<ClockIcon />} />
+        <CardHeader title={t('weather.hourlyWeather')} icon={<ClockIcon />} />
         <CardContent>
           <div className='no-scrollbar flex items-center justify-between gap-4 overflow-x-auto pb-4'>
             {hourlyForecast.map((item, idx) => (

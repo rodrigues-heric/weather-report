@@ -46,16 +46,29 @@
     "system": "System"
   },
   "search": {
-    "placeholder": "Search city...",
-    "buttonSearch": "Search"
+    "placeholder": "Search city..."
   },
   "weather": {
-    "feelsLike": "Feels Like",
+    "hourlyWeather": "Hourly Weather",
+    "7DayForecast": "7-Day Forecast",
+    "7DayVariation": "7-Day Variation",
+    "feelsLike": "Feels",
+    "details": "Weather Details",
     "humidity": "Humidity",
     "wind": "Wind",
     "pressure": "Pressure",
     "uvIndex": "UV Index",
+    "visibility": "Visibility",
     "sunrise": "Sunrise",
     "sunset": "Sunset"
+  },
+  "weatherConditions": {
+    "clear": "Clear",
+    "partiallyCloudy": "Partially Cloudy",
+    "cloudy": "Cloudy",
+    "rain": "Rain",
+    "thunderstorm": "Thunderstorm",
+    "snow": "Snow",
+    "fog": "Fog"
   }
 }

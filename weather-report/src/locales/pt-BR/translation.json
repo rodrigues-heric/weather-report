@@ -46,16 +46,29 @@
     "system": "Sistema"
   },
   "search": {
-    "placeholder": "Pesquisar cidade...",
-    "buttonSearch": "Pesquisar"
+    "placeholder": "Buscar cidade..."
   },
   "weather": {
-    "feelsLike": "Sensação Térmica",
+    "hourlyWeather": "Previsão por Hora",
+    "7DayForecast": "Previsão de 7 Dias",
+    "7DayVariation": "Variação em 7 Dias",
+    "feelsLike": "Sensação",
+    "details": "Detalhes do Clima",
     "humidity": "Umidade",
     "wind": "Vento",
     "pressure": "Pressão",
     "uvIndex": "Índice UV",
+    "visibility": "Visibilidade",
     "sunrise": "Nascer do Sol",
     "sunset": "Pôr do Sol"
+  },
+  "weatherConditions": {
+    "clear": "Céu Limpo",
+    "partiallyCloudy": "Parcialmente Nublado",
+    "cloudy": "Nublado",
+    "rain": "Chuva",
+    "thunderstorm": "Trovoada",
+    "snow": "Neve",
+    "fog": "Nevoeiro"
   }
 }

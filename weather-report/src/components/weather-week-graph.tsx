@@ -11,6 +11,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import { useTranslation } from 'react-i18next';
 
 // MOCK
 const dailyData = [
@@ -34,10 +35,12 @@ export function WeatherWeekGraph({
   gridColor: string;
   theme: string;
 }) {
+  const { t } = useTranslation();
+
   return (
     <Card className='flex flex-col xl:col-span-2'>
       <CardHeader
-        title='Variação de Temperatura (7 Dias)'
+        title={t('weather.7DayVariation')}
         icon={<Calendar size={18} />}
       />
       <CardContent className='min-h-0 flex-1'>

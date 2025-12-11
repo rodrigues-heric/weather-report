@@ -1,6 +1,7 @@
 import { cloneElement } from 'react';
 import { Card } from './card';
 import { Wind, Droplets, Sun, Gauge, Eye, Thermometer } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 // MOCK
 const currentData = {
@@ -44,38 +45,42 @@ const DetailBox = ({
 );
 
 export function WeatherDetails() {
+  const { t } = useTranslation();
+
   return (
     <div>
-      <h3 className='mb-4 ml-1 text-lg font-semibold'>Detalhes do Clima</h3>
+      <h3 className='mb-4 ml-1 text-lg font-semibold'>
+        {t('weather.details')}
+      </h3>
       <div className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6'>
         <DetailBox
           icon={<Wind />}
-          label='Vento'
+          label={t('weather.wind')}
           value={currentData.details.windSpeed}
         />
         <DetailBox
           icon={<Droplets />}
-          label='Umidade'
+          label={t('weather.humidity')}
           value={currentData.details.humidity}
         />
         <DetailBox
           icon={<Sun />}
-          label='Índice UV'
+          label={t('weather.uvIndex')}
           value={currentData.details.uvIndex}
         />
         <DetailBox
           icon={<Eye />}
-          label='Visibilidade'
+          label={t('weather.visibility')}
           value={currentData.details.visibility}
         />
         <DetailBox
           icon={<Gauge />}
-          label='Pressão'
+          label={t('weather.pressure')}
           value={currentData.details.pressure}
         />
         <DetailBox
           icon={<Thermometer />}
-          label='Sensação'
+          label={t('weather.feelsLike')}
           value={`${currentData.feelsLike}°`}
         />
       </div>

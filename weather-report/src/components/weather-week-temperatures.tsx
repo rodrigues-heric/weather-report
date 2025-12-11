@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Card } from './card';
 import { CardContent } from './card-content';
 import { CardHeader } from './card-header';
@@ -15,9 +16,11 @@ const dailyData = [
 ];
 
 export function WeatherWeekTemperatures() {
+  const { t } = useTranslation();
+
   return (
     <Card className='flex flex-col overflow-hidden xl:col-span-1'>
-      <CardHeader title='Próximos Dias' />
+      <CardHeader title={t('weather.7DayForecast')} />
       <CardContent className='custom-scrollbar flex-1 space-y-4 overflow-y-auto pr-2'>
         {dailyData.map((day, idx) => (
           <div
