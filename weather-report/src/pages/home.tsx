@@ -35,7 +35,7 @@ export function Home() {
         <section className='space-y-6 lg:col-span-9'>
           <WeatherHourly />
 
-          <div className='grid h-[400px] grid-cols-1 gap-6 xl:grid-cols-3'>
+          <div className='grid grid-cols-1 gap-6 xl:grid-cols-3'>
             <WeatherWeekGraph
               chartColorMax={chartColorMax}
               chartColorMin={chartColorMin}
