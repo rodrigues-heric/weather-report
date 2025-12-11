@@ -60,7 +60,9 @@
     "uvIndex": "UV Index",
     "visibility": "Visibility",
     "sunrise": "Sunrise",
-    "sunset": "Sunset"
+    "sunset": "Sunset",
+    "min": "Min",
+    "max": "Max"
   },
   "weatherConditions": {
     "clear": "Clear",

@@ -60,7 +60,9 @@
     "uvIndex": "Índice UV",
     "visibility": "Visibilidade",
     "sunrise": "Nascer do Sol",
-    "sunset": "Pôr do Sol"
+    "sunset": "Pôr do Sol",
+    "min": "Mínima",
+    "max": "Máxima"
   },
   "weatherConditions": {
     "clear": "Céu Limpo",

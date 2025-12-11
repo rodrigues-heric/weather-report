@@ -100,7 +100,7 @@ export function WeatherWeekGraph({
                 strokeWidth={3}
                 fillOpacity={1}
                 fill='url(#colorMax)'
-                name='Máxima'
+                name={t('weather.max')}
               />
               <Area
                 type='monotone'
@@ -109,7 +109,7 @@ export function WeatherWeekGraph({
                 strokeWidth={2}
                 fill='transparent'
                 strokeDasharray='4 4'
-                name='Mínima'
+                name={t('weather.min')}
               />
             </AreaChart>
           </ResponsiveContainer>
