@@ -14,8 +14,11 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { useTranslation } from 'react-i18next';
+interface CitySearchProps {
+  onCitySelect: (city: City) => void;
+}
 
-export function CitySearch() {
+export function CitySearch({ onCitySelect }: CitySearchProps) {
   const { t } = useTranslation();
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 
@@ -24,18 +27,22 @@ export function CitySearch() {
 
   const showSuggestions = suggestions.length > 0;
 
+  const handleSelectCity = (city: City) => {
+    setQuery(`${city.name}, ${city.country}`);
+    clearSuggestions();
+    onCitySelect(city);
+  };
+
   const handleValidation = () => {
     const exactMatch = suggestions.find(
       city => city.name.toLowerCase() === query.toLowerCase()
     );
 
-    if (query.length < 3 || (!exactMatch && suggestions.length === 0)) {
-      setIsDialogOpen(true);
-    } else if (suggestions.length > 0 && !exactMatch) {
-      setIsDialogOpen(true);
-    } else {
+    if (exactMatch) {
       clearSuggestions();
-      console.log('Cidade Válida Selecionada:', query);
+      onCitySelect(exactMatch);
+    } else {
+      setIsDialogOpen(true);
     }
   };
 
@@ -44,11 +51,6 @@ export function CitySearch() {
       e.preventDefault();
       handleValidation();
     }
-  };
-
-  const handleSelectCity = (city: City) => {
-    setQuery(`${city.name}, ${city.country}`);
-    clearSuggestions();
   };
 
   return (

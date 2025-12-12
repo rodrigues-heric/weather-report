@@ -1,40 +1,43 @@
 import { MapPin } from 'lucide-react';
 import { CitySearch } from './city-search';
+import type { City } from './hooks/use-city-search';
+import { useState } from 'react';
 
-// MOCK
-const currentData = {
-  city: 'Porto Alegre',
-  state: 'RS',
-  temp: 24,
-  condition: 'Parcialmente Nublado',
-  min: 18,
-  max: 28,
-  feelsLike: 26,
-  description:
-    'O céu permanecerá nublado durante a tarde, com possibilidade de garoa à noite.',
-  details: {
-    humidity: '65%',
-    pressure: '1012 hPa',
-    visibility: '10 km',
-    uvIndex: 'Moderado (4)',
-    windSpeed: '12 km/h',
-    airQuality: 'Bom (42)',
-  },
+const displayCity = (city: City | null) => {
+  if (!city) {
+    return (
+      <span className='text-foreground text-lg font-medium'>
+        Selecione uma cidade
+      </span>
+    );
+  }
+
+  return (
+    <>
+      <MapPin className='h-5 w-5' />
+      <span className='text-foreground text-lg font-medium'>
+        {city.name}, {city.admin1} | {city.country}
+      </span>
+    </>
+  );
 };
 
 export function WeatherHeader() {
+  const [selectedCity, setSelectedCity] = useState<City | null>(null);
+
+  const handleCitySelection = (city: City) => {
+    setSelectedCity(city);
+  };
+
   return (
     <header className='flex items-center justify-between pb-2'>
       <div className='text-muted-foreground flex items-center gap-2'>
-        <MapPin className='h-5 w-5' />
-        <span className='text-foreground text-lg font-medium'>
-          {currentData.city}, {currentData.state}
-        </span>
+        {displayCity(selectedCity)}
       </div>
 
       <div className='flex items-center gap-4'>
         <div className='relative hidden md:block'>
-          <CitySearch />
+          <CitySearch onCitySelect={handleCitySelection} />
         </div>
       </div>
     </header>
