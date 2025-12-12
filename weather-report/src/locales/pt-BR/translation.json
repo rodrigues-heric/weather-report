@@ -65,12 +65,26 @@
     "max": "Máxima"
   },
   "weatherConditions": {
-    "clear": "Céu Limpo",
-    "partiallyCloudy": "Parcialmente Nublado",
+    "clear": "Céu limpo",
+    "mainlyClear": "Principalmente limpo",
+    "partiallyCloudy": "Parcialmente nublado",
     "cloudy": "Nublado",
-    "rain": "Chuva",
-    "thunderstorm": "Trovoada",
-    "snow": "Neve",
-    "fog": "Nevoeiro"
+    "fog": "Nevoeiro",
+    "rimeFog": "Nevoeiro com geada",
+    "lightDrizzle": "Garoa leve",
+    "drizzle": "Garoa moderada",
+    "heavyDrizzle": "Garoa pesada",
+    "lightRain": "Chuva leve",
+    "rain": "Chuva moderada",
+    "heavyRain": "Chuva pesada",
+    "lightSnow": "Neve leve",
+    "snow": "Neve moderada",
+    "heavySnow": "Neve pesada",
+    "lightShowers": "Pancadas de chuva leves",
+    "showers": "Pancadas de chuva moderadas",
+    "heavyShowers": "Pancadas de chuva pesadas",
+    "thunderstorm": "Tempestade",
+    "lightThunderstormWithHail": "Tempestade leve com granizo",
+    "thunderstormWithHail": "Tempestade forte com granizo"
   }
 }
