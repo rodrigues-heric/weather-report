@@ -14,6 +14,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { useTranslation } from 'react-i18next';
+
 interface CitySearchProps {
   onCitySelect: (city: City) => void;
 }
@@ -21,15 +22,18 @@ interface CitySearchProps {
 export function CitySearch({ onCitySelect }: CitySearchProps) {
   const { t } = useTranslation();
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+  const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
 
   const { query, setQuery, suggestions, isLoading, clearSuggestions } =
     useCitySearch();
 
-  const showSuggestions = suggestions.length > 0;
+  const showSuggestions = suggestions.length > 0 && isInputFocused;
 
   const handleSelectCity = (city: City) => {
-    setQuery(`${city.name}, ${city.country}`);
+    setQuery(`${city.name}, ${city.admin1} | ${city.country}`);
     clearSuggestions();
+    document.activeElement instanceof HTMLElement &&
+      document.activeElement.blur();
     onCitySelect(city);
   };
 
@@ -64,6 +68,10 @@ export function CitySearch({ onCitySelect }: CitySearchProps) {
           value={query}
           onChange={e => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
+          onFocus={() => setIsInputFocused(true)}
+          onBlur={() => {
+            setTimeout(() => setIsInputFocused(false), 100);
+          }}
         />
         {isLoading && (
           <div className='absolute top-3 right-3'>
