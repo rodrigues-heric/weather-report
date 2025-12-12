@@ -46,7 +46,11 @@
     "system": "System"
   },
   "search": {
-    "placeholder": "Search city..."
+    "placeholder": "Search city...",
+    "notFoundTitle": "City not found",
+    "notFoundDescription": "We couldn't locate",
+    "checkSpelling": "Please check the spelling or select a city from the list.",
+    "ok": "OK"
   },
   "weather": {
     "hourlyWeather": "Hourly Weather",

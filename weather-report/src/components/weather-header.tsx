@@ -1,5 +1,5 @@
-import { MapPin, Search } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import { MapPin } from 'lucide-react';
+import { CitySearch } from './city-search';
 
 // MOCK
 const currentData = {
@@ -23,8 +23,6 @@ const currentData = {
 };
 
 export function WeatherHeader() {
-  const { t } = useTranslation();
-
   return (
     <header className='flex items-center justify-between pb-2'>
       <div className='text-muted-foreground flex items-center gap-2'>
@@ -36,12 +34,7 @@ export function WeatherHeader() {
 
       <div className='flex items-center gap-4'>
         <div className='relative hidden md:block'>
-          <Search className='text-muted-foreground absolute top-2.5 left-2.5 h-4 w-4' />
-          <input
-            type='text'
-            placeholder={t('search.placeholder')}
-            className='border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring h-10 w-[250px] rounded-md border px-3 py-2 pl-9 text-sm focus-visible:ring-2 focus-visible:outline-none'
-          />
+          <CitySearch />
         </div>
       </div>
     </header>

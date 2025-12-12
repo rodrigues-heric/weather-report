@@ -46,7 +46,11 @@
     "system": "Sistema"
   },
   "search": {
-    "placeholder": "Buscar cidade..."
+    "placeholder": "Buscar cidade...",
+    "notFoundTitle": "Cidade não encontrada",
+    "notFoundDescription": "Não conseguimos localizar",
+    "checkSpelling": "Por favor, verifique a ortografia ou selecione uma cidade da lista.",
+    "ok": "Entendi"
   },
   "weather": {
     "hourlyWeather": "Previsão por Hora",
