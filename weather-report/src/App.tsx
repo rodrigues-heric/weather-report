@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 import { Home } from './pages/home';
 import { LanguageSelector } from './components/language-selector';
+import { WeatherDataProvider } from './contexts/weather-data-context';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,16 +23,18 @@ const router = createBrowserRouter(
 export default function App() {
   return (
     <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
-      <div className='flex flex-col p-4'>
-        <header className='mb-4 flex items-center justify-between'>
-          <LanguageSelector />
-          <ModeToggle />
-        </header>
+      <WeatherDataProvider>
+        <div className='flex flex-col p-4'>
+          <header className='mb-4 flex items-center justify-between'>
+            <LanguageSelector />
+            <ModeToggle />
+          </header>
 
-        <main className='flex'>
-          <RouterProvider router={router} />
-        </main>
-      </div>
+          <main className='flex'>
+            <RouterProvider router={router} />
+          </main>
+        </div>
+      </WeatherDataProvider>
     </ThemeProvider>
   );
 }

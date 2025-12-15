@@ -2,6 +2,7 @@ import { MapPin } from 'lucide-react';
 import { CitySearch } from './city-search';
 import type { City } from './hooks/use-city-search';
 import { useState } from 'react';
+import { useSendCityData } from './hooks/use-send-city-data';
 
 const displayCity = (city: City | null) => {
   if (!city) {
@@ -28,6 +29,8 @@ export function WeatherHeader() {
   const handleCitySelection = (city: City) => {
     setSelectedCity(city);
   };
+
+  useSendCityData(selectedCity);
 
   return (
     <header className='flex items-center justify-between pb-2'>
