@@ -1,8 +1,12 @@
-"""Módulo para buscar e processar dados meteorológicos usando a API Open-Meteo."""
-
+"""API Flask para buscar dados meteorológicos da API Open-Meteo."""
+from flask import Flask, jsonify, request
+from flask_cors import CORS
 import requests
 import datetime
 from datetime import datetime as dt
+
+app = Flask(__name__)
+CORS(app)
 
 def get_coordinates(city_name):
     """Busca latitude e longitude para a cidade informada."""
@@ -10,7 +14,7 @@ def get_coordinates(city_name):
     params = {"name": city_name, "count": 1, "language": "pt", "format": "json"}
     
     try:
-        response = requests.get(url, params=params)
+        response = requests.get(url, params=params, timeout=10)
         response.raise_for_status()
         data = response.json()
         
@@ -22,11 +26,7 @@ def get_coordinates(city_name):
         raise Exception(f"Erro na conexão com serviço de geocodificação: {e}")
 
 def interpret_wmo_code(code):
-    """
-    Traduz o código WMO numérico para texto legível.
-
-    Códigos baseados na documentação WMO.
-    """
+    """Traduz o código WMO numérico para texto legível."""
     codes = {
         0: "Céu limpo", 1: "Principalmente limpo", 2: "Parcialmente nublado", 3: "Encoberto",
         45: "Névoa", 48: "Névoa com geada",
@@ -54,76 +54,100 @@ def get_weather_data(lat, lon, timezone):
     }
 
     try:
-        response = requests.get(url, params=params)
+        response = requests.get(url, params=params, timeout=10)
         response.raise_for_status()
         return response.json()
     except requests.exceptions.RequestException as e:
         raise Exception(f"Erro ao buscar dados do tempo: {e}")
 
-def main():
-    city = input("Digite o nome da cidade: ")
+def build_weather_response(city_name, country, state, w_data):
+    """Constrói a resposta com os dados formatados."""
+    current = w_data["current"]
+    daily = w_data["daily"]
+    hourly = w_data["hourly"]
     
+    current_hour_index = datetime.datetime.now().hour
+    vis_km = hourly['visibility'][current_hour_index] / 1000
+    
+    # Dados atuais
+    current_data = {
+        "condition": interpret_wmo_code(current['weather_code']),
+        "temperature": current['temperature_2m'],
+        "feelsLike": current['apparent_temperature'],
+        "minTemperature": daily['temperature_2m_min'][0],
+        "maxTemperature": daily['temperature_2m_max'][0],
+        "windSpeed": current['wind_speed_10m'],
+        "humidity": current['relative_humidity_2m'],
+        "pressure": current['pressure_msl'],
+        "visibility": round(vis_km, 2),
+        "uvIndex": daily['uv_index_max'][0],
+    }
+    
+    # Previsão dos próximos 7 dias
+    forecast_7days = []
+    for i in range(1, 8):
+        date_str = daily['time'][i]
+        date_obj = dt.strptime(date_str, '%Y-%m-%d')
+        formatted_date = date_obj.strftime('%d/%m')
+        
+        forecast_7days.append({
+            "date": formatted_date,
+            "minTemperature": daily['temperature_2m_min'][i],
+            "maxTemperature": daily['temperature_2m_max'][i],
+        })
+    
+    # Previsão hora a hora (hoje)
+    hourly_forecast = []
+    today_str = daily['time'][0]
+    
+    for i, time_str in enumerate(hourly['time']):
+        if time_str.startswith(today_str):
+            hour_only = time_str.split('T')[1]
+            temp = hourly['temperature_2m'][i]
+            code = hourly['weather_code'][i]
+            hourly_forecast.append({
+                "time": hour_only,
+                "temperature": temp,
+                "condition": interpret_wmo_code(code),
+            })
+    
+    return {
+        "name": city_name,
+        "country": country,
+        "state": state,
+        "current": current_data,
+        "forecast7days": forecast_7days,
+        "hourlyForecast": hourly_forecast,
+    }
+
+@app.route('/api/weather/<city_name>', methods=['GET'])
+def get_weather(city_name):
+    """Endpoint para buscar dados meteorológicos de uma cidade."""
     try:
-        geo_data = get_coordinates(city)
+        state = request.args.get('state', '')
+        
+        geo_data = get_coordinates(city_name)
         lat = geo_data["latitude"]
         lon = geo_data["longitude"]
-        city_name = geo_data["name"]
+        actual_city_name = geo_data["name"]
         country = geo_data.get("country", "")
         timezone = geo_data.get("timezone", "auto")
-
-        print(f"\n--- Buscando dados para {city_name}, {country} ---\n")
-
+        
         w_data = get_weather_data(lat, lon, timezone)
         
-        current = w_data["current"]
-        daily = w_data["daily"]
-        hourly = w_data["hourly"]
+        response = build_weather_response(actual_city_name, country, state, w_data)
         
-        print("## DADOS ATUAIS ##")
-        print(f"Tempo agora: {interpret_wmo_code(current['weather_code'])}")
-        print(f"Temperatura: {current['temperature_2m']}°C")
-        print(f"Sensação Térmica: {current['apparent_temperature']}°C")
-        print(f"Mínima de hoje: {daily['temperature_2m_min'][0]}°C")
-        print(f"Máxima de hoje: {daily['temperature_2m_max'][0]}°C")
-        print(f"Vento: {current['wind_speed_10m']} km/h")
-        print(f"Umidade: {current['relative_humidity_2m']}%")
-        print(f"Pressão Atmosférica: {current['pressure_msl']} hPa")
-        print(f"Índice UV Máx (Hoje): {daily['uv_index_max'][0]}")
-        
-        # A API Open-Meteo fornece visibilidade no array horário. 
-        # Pegamos a visibilidade da hora atual aproximada.
-        current_hour_index = datetime.datetime.now().hour
-        vis_km = hourly['visibility'][current_hour_index] / 1000
-        print(f"Visibilidade: {vis_km} km")
+        return jsonify(response), 200
+    
+    except ValueError as ve:
+        return jsonify({"error": str(ve)}), 404
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
-        print("-" * 40)
-        
-        print("## PREVISÃO PRÓXIMOS 7 DIAS (Mín / Máx) ##")
-        for i in range(1, 8):
-            date_str = daily['time'][i]
-            date_obj = dt.strptime(date_str, '%Y-%m-%d')
-            formatted_date = date_obj.strftime('%d/%m')
-            
-            min_temp = daily['temperature_2m_min'][i]
-            max_temp = daily['temperature_2m_max'][i]
-            print(f"{formatted_date}: Min {min_temp}°C | Max {max_temp}°C")
+@app.route('/health', methods=['GET'])
+def health():
+    """Endpoint de health check."""
+    return jsonify({"status": "ok"}), 200
 
-        print("-" * 40)
-
-        print("## PREVISÃO HORA A HORA (HOJE) ##")
-        today_str = daily['time'][0]
-        
-        print(f"{'HORA':<10} | {'TEMP':<10} | {'CONDIÇÃO'}")
-        
-        for i, time_str in enumerate(hourly['time']):
-            if time_str.startswith(today_str):
-                hour_only = time_str.split('T')[1]
-                temp = hourly['temperature_2m'][i]
-                code = hourly['weather_code'][i]
-                print(f"{hour_only:<10} | {temp:>5} °C | {interpret_wmo_code(code)}")
-
-    except Exception as error:
-        print(f"\n❌ OCORREU UM ERRO FATAL: {error}")
-
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)

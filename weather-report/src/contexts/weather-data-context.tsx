@@ -63,8 +63,10 @@ export const WeatherDataProvider: React.FC<WeatherDataProviderProps> = ({
 
 export const useWeatherData = () => {
   const context = useContext(WeatherDataContext);
+
   if (context === undefined) {
     throw new Error('useWeatherData must be used within a WeatherDataProvider');
   }
+
   return context;
 };

@@ -46,6 +46,7 @@
     "system": "Sistema"
   },
   "search": {
+    "select": "Selecione uma cidade",
     "placeholder": "Buscar cidade...",
     "notFoundTitle": "Cidade não encontrada",
     "notFoundDescription": "Não conseguimos localizar",
@@ -90,5 +91,10 @@
     "thunderstorm": "Tempestade",
     "lightThunderstormWithHail": "Tempestade leve com granizo",
     "thunderstormWithHail": "Tempestade forte com granizo"
+  },
+  "error": {
+    "title": "Um erro ocorreu",
+    "message": "Unable to fetch weather data. Please try again later.",
+    "ok": "Entendi"
   }
 }

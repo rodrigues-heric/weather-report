@@ -43,6 +43,12 @@ export class City extends Document {
 
   @Prop({ required: true })
   uvIndex: number;
+
+  @Prop()
+  createdAt?: Date;
+
+  @Prop()
+  updatedAt?: Date;
 }
 
 export const CitySchema = SchemaFactory.createForClass(City);

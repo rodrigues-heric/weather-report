@@ -3,12 +3,15 @@ import { CitySearch } from './city-search';
 import type { City } from './hooks/use-city-search';
 import { useState } from 'react';
 import { useSendCityData } from './hooks/use-send-city-data';
+import { useTranslation } from 'react-i18next';
 
 const displayCity = (city: City | null) => {
+  const { t } = useTranslation();
+
   if (!city) {
     return (
       <span className='text-foreground text-lg font-medium'>
-        Selecione uma cidade
+        {t('search.select')}
       </span>
     );
   }

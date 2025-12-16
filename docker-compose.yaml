@@ -15,5 +15,16 @@ services:
     volumes:
       - mongo_data:/data/db
 
+  weather-api:
+    build:
+      context: ./data_processing
+      dockerfile: Dockerfile
+    container_name: weather-api
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_ENV: production
+
 volumes:
   mongo_data:
