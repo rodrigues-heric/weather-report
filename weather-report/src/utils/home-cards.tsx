@@ -23,7 +23,7 @@ export function getHomeHourlyCard(
   weatherData: WeatherData | null
 ): JSX.Element {
   if (!isLoading && weatherData) {
-    return <WeatherHourly />;
+    return <WeatherHourly weatherData={weatherData} />;
   } else {
     return (
       <Skeleton className='grid h-72 w-full grid-cols-1 gap-6 md:grid-cols-3'></Skeleton>
