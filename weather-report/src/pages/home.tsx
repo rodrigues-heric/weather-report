@@ -31,7 +31,7 @@ export function Home() {
 
   let weatherMainCardContent;
   if (!isLoading && weatherData) {
-    weatherMainCardContent = <WeatherMainCard />;
+    weatherMainCardContent = <WeatherMainCard weatherData={weatherData} />;
   } else if (isLoading || !weatherData) {
     weatherMainCardContent = (
       <Skeleton className='space-y-6 lg:col-span-3'></Skeleton>
