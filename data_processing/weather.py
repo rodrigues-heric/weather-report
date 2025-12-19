@@ -8,10 +8,10 @@ from datetime import datetime as dt
 app = Flask(__name__)
 CORS(app)
 
-def get_coordinates(city_name):
+def get_coordinates(city_name: str, lang: str = "en"):
     """Busca latitude e longitude para a cidade informada."""
     url = "https://geocoding-api.open-meteo.com/v1/search"
-    params = {"name": city_name, "count": 1, "language": "pt", "format": "json"}
+    params = {"name": city_name, "count": 1, "language": lang, "format": "json"}
     
     try:
         response = requests.get(url, params=params, timeout=10)
@@ -48,7 +48,7 @@ def get_weather_data(lat, lon, timezone):
         "current": ["temperature_2m", "relative_humidity_2m", "apparent_temperature", 
                     "is_day", "weather_code", "pressure_msl", "wind_speed_10m"],
         "hourly": ["temperature_2m", "weather_code", "visibility"],
-        "daily": ["temperature_2m_max", "temperature_2m_min", "uv_index_max"],
+        "daily": ["temperature_2m_max", "temperature_2m_min", "uv_index_max", "weather_code"],
         "timezone": timezone, 
         "forecast_days": 8 
     }
@@ -92,20 +92,22 @@ def build_weather_response(city_name, country, state, w_data):
         
         forecast_7days.append({
             "date": formatted_date,
+            "condition": interpret_wmo_code(daily['weather_code'][i]),
             "minTemperature": daily['temperature_2m_min'][i],
             "maxTemperature": daily['temperature_2m_max'][i],
         })
     
     # Previsão hora a hora (hoje)
-    hourly_forecast = []
+    hourly_result = []
     today_str = daily['time'][0]
-    
+
     for i, time_str in enumerate(hourly['time']):
         if time_str.startswith(today_str):
-            hour_only = time_str.split('T')[1]
+            # Trim seconds if present, keep HH:MM
+            hour_only = time_str.split('T')[1][:5]
             temp = hourly['temperature_2m'][i]
             code = hourly['weather_code'][i]
-            hourly_forecast.append({
+            hourly_result.append({
                 "time": hour_only,
                 "temperature": temp,
                 "condition": interpret_wmo_code(code),
@@ -117,7 +119,7 @@ def build_weather_response(city_name, country, state, w_data):
         "state": state,
         "current": current_data,
         "forecast7days": forecast_7days,
-        "hourlyForecast": hourly_forecast,
+        "hourly": hourly_result,
     }
 
 @app.route('/api/weather/<city_name>', methods=['GET'])
@@ -125,8 +127,9 @@ def get_weather(city_name):
     """Endpoint para buscar dados meteorológicos de uma cidade."""
     try:
         state = request.args.get('state', '')
+        lang = request.args.get('lang', 'en')
         
-        geo_data = get_coordinates(city_name)
+        geo_data = get_coordinates(city_name=city_name, lang=lang)
         lat = geo_data["latitude"]
         lon = geo_data["longitude"]
         actual_city_name = geo_data["name"]

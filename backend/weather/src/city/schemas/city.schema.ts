@@ -3,6 +3,37 @@ import { Document, HydratedDocument } from 'mongoose';
 
 export type CityDocument = HydratedDocument<City>;
 
+@Schema({ _id: false })
+export class Forecast {
+  @Prop({ required: true })
+  date: string;
+
+  @Prop({ required: true })
+  condition: string;
+
+  @Prop({ required: true })
+  minTemperature: number;
+
+  @Prop({ required: true })
+  maxTemperature: number;
+}
+
+export const ForecastSchema = SchemaFactory.createForClass(Forecast);
+
+@Schema({ _id: false })
+export class Hourly {
+  @Prop({ required: true })
+  time: string;
+
+  @Prop({ required: true })
+  condition: string;
+
+  @Prop({ required: true })
+  temperature: number;
+}
+
+export const HourlySchema = SchemaFactory.createForClass(Hourly);
+
 @Schema({ timestamps: true })
 export class City extends Document {
   @Prop({ required: true })
@@ -49,6 +80,12 @@ export class City extends Document {
 
   @Prop()
   updatedAt?: Date;
+
+  @Prop({ type: [ForecastSchema], default: [] })
+  forecast?: Forecast[];
+
+  @Prop({ type: [HourlySchema], default: [] })
+  hourly?: Hourly[];
 }
 
 export const CitySchema = SchemaFactory.createForClass(City);

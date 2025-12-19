@@ -6,9 +6,10 @@ import {
   HttpStatus,
   Post,
 } from '@nestjs/common';
-import { type cityFetchPayload, CityService } from './city.service';
+import { CityService } from './city.service';
 import { City } from './schemas/city.schema';
 import { CityDto } from './dto/city.dto';
+import { CityFetchDto } from './dto/city-fetch.dto';
 
 @Controller('/city')
 export class CityController {
@@ -23,7 +24,7 @@ export class CityController {
   @Post('/fetch')
   @HttpCode(HttpStatus.OK)
   async fetchCityData(
-    @Body() cityFetchPayload: cityFetchPayload,
+    @Body() cityFetchPayload: CityFetchDto,
   ): Promise<City | null> {
     return this.cityService.fetchCityData(cityFetchPayload);
   }

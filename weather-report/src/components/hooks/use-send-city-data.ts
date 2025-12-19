@@ -8,7 +8,7 @@ import {
 /**
  * Hook customizado para enviar dados de uma cidade e atualizar o estado global.
  */
-export function useSendCityData(cityData: City | null) {
+export function useSendCityData(cityData: City | null, lang: string = 'en') {
   const { setWeatherData, setIsLoading, setError } = useWeatherData();
 
   const sendCityToBackend = async (cityData: City) => {
@@ -28,6 +28,7 @@ export function useSendCityData(cityData: City | null) {
           name: cityData.name,
           country: cityData.country,
           state: cityData.admin1,
+          lang: lang,
         }),
       });
 

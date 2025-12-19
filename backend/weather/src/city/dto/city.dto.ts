@@ -1,4 +1,12 @@
-import { IsString, IsNumber, IsNotEmpty, Min, Max } from 'class-validator';
+import {
+  IsString,
+  IsNumber,
+  IsNotEmpty,
+  Min,
+  Max,
+  ValidateNested,
+  IsOptional,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class CityDto {
@@ -68,4 +76,45 @@ export class CityDto {
   @Type(() => Number)
   @Min(0)
   uvIndex: number;
+
+  @IsOptional()
+  @ValidateNested({ each: true })
+  @Type(() => ForecastDto)
+  forecast?: ForecastDto[];
+
+  @IsOptional()
+  @ValidateNested({ each: true })
+  @Type(() => HourlyDto)
+  hourly?: HourlyDto[];
+}
+
+export class ForecastDto {
+  @IsString()
+  @IsNotEmpty()
+  date: string;
+
+  @IsString()
+  @IsNotEmpty()
+  condition: string;
+
+  @IsNumber()
+  @IsNotEmpty()
+  @Type(() => Number)
+  minTemperature: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  @Type(() => Number)
+  maxTemperature: number;
+}
+
+export class HourlyDto {
+  @IsString()
+  @IsNotEmpty()
+  time: string;
+
+  @IsNumber()
+  @IsNotEmpty()
+  @Type(() => Number)
+  temperature: number;
 }

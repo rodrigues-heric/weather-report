@@ -4,12 +4,7 @@ import { City } from './schemas/city.schema';
 import { Model } from 'mongoose';
 import { CityDto } from './dto/city.dto';
 import axios from 'axios';
-
-export interface cityFetchPayload {
-  name: string;
-  country: string;
-  state: string;
-}
+import { CityFetchDto } from './dto/city-fetch.dto';
 
 @Injectable()
 export class CityService {
@@ -21,9 +16,10 @@ export class CityService {
   private async fetchWeatherFromApi(
     cityName: string,
     state: string,
+    lang: string,
   ): Promise<any> {
     try {
-      const url = `${this.weatherApiUrl}/api/weather/${encodeURIComponent(cityName)}?state=${encodeURIComponent(state)}`;
+      const url = `${this.weatherApiUrl}/api/weather/${encodeURIComponent(cityName)}?state=${encodeURIComponent(state)}&lang=${encodeURIComponent(lang)}`;
       const response = await axios.get(url);
       return response.data;
     } catch (error) {
@@ -37,6 +33,7 @@ export class CityService {
     state: string,
   ): Partial<CityDto> | null {
     if (!weatherData) return null;
+    const hourlySource = weatherData.hourly || weatherData.hourlyForecast || [];
 
     return {
       name: weatherData.name,
@@ -52,6 +49,21 @@ export class CityService {
       pressure: weatherData.current.pressure,
       visibility: weatherData.current.visibility,
       uvIndex: weatherData.current.uvIndex,
+      forecast: Array.isArray(weatherData.forecast7days)
+        ? weatherData.forecast7days.slice(0, 7).map((f: any) => ({
+            date: f.date,
+            condition: f.condition,
+            minTemperature: Number(f.minTemperature),
+            maxTemperature: Number(f.maxTemperature),
+          }))
+        : [],
+      hourly: Array.isArray(hourlySource)
+        ? hourlySource.map((h: any) => ({
+            time: h.time,
+            temperature: Number(h.temperature),
+            condition: h.condition,
+          }))
+        : [],
     };
   }
 
@@ -72,10 +84,8 @@ export class CityService {
     return this.cityModel.find().exec();
   }
 
-  async fetchCityData(
-    cityFetchPayload: cityFetchPayload,
-  ): Promise<City | null> {
-    const { name, country, state } = cityFetchPayload;
+  async fetchCityData(cityFetchPayload: CityFetchDto): Promise<City | null> {
+    const { name, country, state, lang } = cityFetchPayload;
     const filter = {
       name: name,
       country: country,
@@ -95,7 +105,7 @@ export class CityService {
       return latestEntry;
     }
 
-    const weatherData = await this.fetchWeatherFromApi(name, state);
+    const weatherData = await this.fetchWeatherFromApi(name, state, lang);
 
     if (weatherData) {
       const weatherDto = this.mapWeatherDataToCityDto(weatherData, state);

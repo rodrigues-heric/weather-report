@@ -28,12 +28,14 @@ const displayCity = (city: City | null) => {
 
 export function WeatherHeader() {
   const [selectedCity, setSelectedCity] = useState<City | null>(null);
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.language == 'pt-BR' ? 'pt' : 'en';
 
   const handleCitySelection = (city: City) => {
     setSelectedCity(city);
   };
 
-  useSendCityData(selectedCity);
+  useSendCityData(selectedCity, currentLanguage);
 
   return (
     <header className='flex items-center justify-between pb-2'>
