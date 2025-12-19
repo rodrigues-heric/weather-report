@@ -2,27 +2,7 @@ import { cloneElement } from 'react';
 import { Card } from './card';
 import { Wind, Droplets, Sun, Gauge, Eye, Thermometer } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-
-// MOCK
-const currentData = {
-  city: 'Porto Alegre',
-  state: 'RS',
-  temp: 24,
-  condition: 'Parcialmente Nublado',
-  min: 18,
-  max: 28,
-  feelsLike: 26,
-  description:
-    'O céu permanecerá nublado durante a tarde, com possibilidade de garoa à noite.',
-  details: {
-    humidity: '65%',
-    pressure: '1012 hPa',
-    visibility: '10 km',
-    uvIndex: 'Moderado (4)',
-    windSpeed: '12 km/h',
-    airQuality: 'Bom (42)',
-  },
-};
+import type { WeatherData } from '@/contexts/weather-data-context';
 
 const DetailBox = ({
   icon,
@@ -44,7 +24,7 @@ const DetailBox = ({
   </Card>
 );
 
-export function WeatherDetails() {
+export function WeatherDetails({ weatherData }: { weatherData: WeatherData }) {
   const { t } = useTranslation();
 
   return (
@@ -56,32 +36,32 @@ export function WeatherDetails() {
         <DetailBox
           icon={<Wind />}
           label={t('weather.wind')}
-          value={currentData.details.windSpeed}
+          value={weatherData.windSpeed + ' km/h'}
         />
         <DetailBox
           icon={<Droplets />}
           label={t('weather.humidity')}
-          value={currentData.details.humidity}
+          value={weatherData.humidity + '%'}
         />
         <DetailBox
           icon={<Sun />}
           label={t('weather.uvIndex')}
-          value={currentData.details.uvIndex}
+          value={weatherData.uvIndex}
         />
         <DetailBox
           icon={<Eye />}
           label={t('weather.visibility')}
-          value={currentData.details.visibility}
+          value={weatherData.visibility + ' km'}
         />
         <DetailBox
           icon={<Gauge />}
           label={t('weather.pressure')}
-          value={currentData.details.pressure}
+          value={weatherData.pressure + ' hPa'}
         />
         <DetailBox
           icon={<Thermometer />}
           label={t('weather.feelsLike')}
-          value={`${currentData.feelsLike}°`}
+          value={`${weatherData.feelsLike}° C`}
         />
       </div>
     </div>

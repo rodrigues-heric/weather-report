@@ -72,7 +72,7 @@ export function getHomeDetailsCard(
   weatherData: WeatherData | null
 ): JSX.Element {
   if (!isLoading && weatherData) {
-    return <WeatherDetails />;
+    return <WeatherDetails weatherData={weatherData} />;
   } else {
     return <Skeleton className='h-48'></Skeleton>;
   }
