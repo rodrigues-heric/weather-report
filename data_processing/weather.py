@@ -48,7 +48,7 @@ def get_weather_data(lat, lon, timezone):
         "current": ["temperature_2m", "relative_humidity_2m", "apparent_temperature", 
                     "is_day", "weather_code", "pressure_msl", "wind_speed_10m"],
         "hourly": ["temperature_2m", "weather_code", "visibility"],
-        "daily": ["temperature_2m_max", "temperature_2m_min", "uv_index_max", "weather_code"],
+        "daily": ["temperature_2m_max", "temperature_2m_min", "uv_index_max", "weather_code", "sunrise", "sunset"],
         "timezone": timezone, 
         "forecast_days": 8 
     }
@@ -68,6 +68,11 @@ def build_weather_response(city_name, country, state, w_data):
     
     current_hour_index = datetime.datetime.now().hour
     vis_km = hourly['visibility'][current_hour_index] / 1000
+
+    sunrise_full = daily['sunrise'][0]
+    sunset_full = daily['sunset'][0]
+    sunrise_time = sunrise_full.split('T')[1]
+    sunset_time = sunset_full.split('T')[1]
     
     # Dados atuais
     current_data = {
@@ -81,6 +86,8 @@ def build_weather_response(city_name, country, state, w_data):
         "pressure": current['pressure_msl'],
         "visibility": round(vis_km, 2),
         "uvIndex": daily['uv_index_max'][0],
+        "sunrise": sunrise_time,
+        "sunset": sunset_time,
     }
     
     # Previsão dos próximos 7 dias

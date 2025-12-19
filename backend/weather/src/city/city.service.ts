@@ -64,6 +64,8 @@ export class CityService {
             condition: h.condition,
           }))
         : [],
+      sunrise: weatherData.current.sunrise,
+      sunset: weatherData.current.sunset,
     };
   }
 

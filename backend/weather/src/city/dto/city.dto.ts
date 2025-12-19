@@ -86,6 +86,14 @@ export class CityDto {
   @ValidateNested({ each: true })
   @Type(() => HourlyDto)
   hourly?: HourlyDto[];
+
+  @IsOptional()
+  @IsString()
+  sunrise?: string;
+
+  @IsOptional()
+  @IsString()
+  sunset?: string;
 }
 
 export class ForecastDto {

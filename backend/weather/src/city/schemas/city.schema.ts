@@ -86,6 +86,12 @@ export class City extends Document {
 
   @Prop({ type: [HourlySchema], default: [] })
   hourly?: Hourly[];
+
+  @Prop()
+  sunrise?: string;
+
+  @Prop()
+  sunset?: string;
 }
 
 export const CitySchema = SchemaFactory.createForClass(City);

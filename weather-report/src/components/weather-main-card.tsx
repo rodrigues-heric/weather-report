@@ -1,4 +1,4 @@
-import { Sun, ArrowDown, ArrowUp } from 'lucide-react';
+import { Sun, ArrowDown, ArrowUp, Sunrise, Sunset } from 'lucide-react';
 import { Card } from './card';
 import { CardContent } from './card-content';
 import { useTranslation } from 'react-i18next';
@@ -23,7 +23,7 @@ export function WeatherMainCard({ weatherData }: { weatherData: WeatherData }) {
           </div>
           <div>
             <h1 className='text-foreground text-7xl font-bold tracking-tighter'>
-              {Math.round(weatherData.temperature)}°
+              {Math.round(weatherData.temperature)}° C
             </h1>
             <p className='text-muted-foreground mt-2 text-xl font-medium'>
               {t(
@@ -39,7 +39,7 @@ export function WeatherMainCard({ weatherData }: { weatherData: WeatherData }) {
               </span>
               <span className='flex items-center justify-center gap-1 text-lg font-bold'>
                 <ArrowDown size={14} className='text-blue-500' />
-                {Math.round(weatherData.minTemperature)}°
+                {Math.round(weatherData.minTemperature)}° C
               </span>
             </div>
             <div className='bg-background/50 border-border flex flex-col rounded-lg border p-3'>
@@ -48,7 +48,25 @@ export function WeatherMainCard({ weatherData }: { weatherData: WeatherData }) {
               </span>
               <span className='flex items-center justify-center gap-1 text-lg font-bold'>
                 <ArrowUp size={14} className='text-red-500' />
-                {Math.round(weatherData.maxTemperature)}°
+                {Math.round(weatherData.maxTemperature)}° C
+              </span>
+            </div>
+            <div className='bg-background/50 border-border flex flex-col rounded-lg border p-3'>
+              <span className='text-muted-foreground text-xs uppercase'>
+                {t('weather.sunrise')}
+              </span>
+              <span className='flex items-center justify-center gap-1 text-lg font-bold'>
+                <Sunrise size={14} className='text-yellow-300' />
+                {weatherData.sunrise || '--:--'}
+              </span>
+            </div>
+            <div className='bg-background/50 border-border flex flex-col rounded-lg border p-3'>
+              <span className='text-muted-foreground text-xs uppercase'>
+                {t('weather.sunset')}
+              </span>
+              <span className='flex items-center justify-center gap-1 text-lg font-bold'>
+                <Sunset size={14} className='text-yellow-600' />
+                {weatherData.sunset || '--:--'}
               </span>
             </div>
           </div>

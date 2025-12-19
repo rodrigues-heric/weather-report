@@ -19,6 +19,19 @@ export interface WeatherData {
   uvIndex: number;
   visibility: number;
   windSpeed: number;
+  sunrise?: string;
+  sunset?: string;
+  forecast: Array<{
+    date: string;
+    condition: string;
+    minTemperature: number;
+    maxTemperature: number;
+  }>;
+  hourly: Array<{
+    time: string;
+    temperature: number;
+    condition: string;
+  }>;
 }
 
 interface WeatherDataContextType {
