@@ -96,5 +96,14 @@
     "title": "Um erro ocorreu",
     "message": "Unable to fetch weather data. Please try again later.",
     "ok": "Entendi"
+  },
+  "weekDays": {
+    "Sun": "Dom",
+    "Mon": "Seg",
+    "Tue": "Ter",
+    "Wed": "Qua",
+    "Thu": "Qui",
+    "Fri": "Sex",
+    "Sat": "Sáb"
   }
 }

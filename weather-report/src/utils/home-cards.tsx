@@ -44,6 +44,7 @@ export function getHomeWeekGraph(
   if (!isLoading && weatherData) {
     return (
       <WeatherWeekGraph
+        weatherData={weatherData}
         chartColorMax={chartInfo.chartColorMax}
         chartColorMin={chartInfo.chartColorMin}
         gridColor={chartInfo.gridColor}

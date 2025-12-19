@@ -12,30 +12,35 @@ import {
   YAxis,
 } from 'recharts';
 import { useTranslation } from 'react-i18next';
-
-// MOCK
-const dailyData = [
-  { day: 'Seg', min: 18, max: 26, condition: 'Sol' },
-  { day: 'Ter', min: 19, max: 28, condition: 'Nublado' },
-  { day: 'Qua', min: 20, max: 25, condition: 'Chuva' },
-  { day: 'Qui', min: 17, max: 22, condition: 'Vento' },
-  { day: 'Sex', min: 16, max: 24, condition: 'Sol' },
-  { day: 'Sáb', min: 18, max: 27, condition: 'Sol' },
-  { day: 'Dom', min: 19, max: 29, condition: 'Quente' },
-];
+import type { WeatherData } from '@/contexts/weather-data-context';
+import { getWeekDay } from '@/utils/dates';
 
 export function WeatherWeekGraph({
+  weatherData,
   chartColorMax,
   chartColorMin,
   gridColor,
   theme,
 }: {
+  weatherData: WeatherData;
   chartColorMax: string;
   chartColorMin: string;
   gridColor: string;
   theme: string;
 }) {
   const { t } = useTranslation();
+
+  let chartData: { day: string; min: number; max: number }[] = [];
+  weatherData.forecast.forEach(day => {
+    const weekDay = getWeekDay(day.date).slice(0, 3);
+
+    const info = {
+      day: t('weekDays.' + weekDay),
+      min: Math.round(day.minTemperature),
+      max: Math.round(day.maxTemperature),
+    };
+    chartData.push(info);
+  });
 
   return (
     <Card className='flex flex-col xl:col-span-2'>
@@ -47,7 +52,7 @@ export function WeatherWeekGraph({
         <div className='h-64 xl:h-full'>
           <ResponsiveContainer width='100%' height='100%'>
             <AreaChart
-              data={dailyData}
+              data={chartData}
               margin={{ top: 10, right: 10, left: -20, bottom: 30 }}
             >
               <defs>
