@@ -61,7 +61,7 @@ export function getHomeWeekTemperatures(
   weatherData: WeatherData | null
 ): JSX.Element {
   if (!isLoading && weatherData) {
-    return <WeatherWeekTemperatures />;
+    return <WeatherWeekTemperatures weatherData={weatherData} />;
   } else {
     return <Skeleton className='h-72'></Skeleton>;
   }
