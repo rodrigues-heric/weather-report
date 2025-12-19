@@ -4,15 +4,13 @@ import { CardContent } from './card-content';
 import { useTranslation } from 'react-i18next';
 import type { WeatherData } from '@/contexts/weather-data-context';
 import { mapConditionPTtoEN } from '@/utils/map-condition';
-import { conditionIconMap } from '@/utils/map-condition-icon.tsx';
+import { getConditionIconBig } from '@/utils/map-condition-icon.tsx';
 
 export function WeatherMainCard({ weatherData }: { weatherData: WeatherData }) {
   const { t } = useTranslation();
 
   const conditionEN = mapConditionPTtoEN(weatherData.condition);
-  const conditionIcon = conditionIconMap[conditionEN] || (
-    <Sun size={64} className='animate-pulse-slow text-yellow-500' />
-  );
+  const conditionIcon = getConditionIconBig(conditionEN);
 
   return (
     <section className='space-y-6 lg:col-span-3'>
