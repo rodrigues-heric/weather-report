@@ -22,7 +22,7 @@ export function MobileSidebar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className='flex w-full justify-end md:hidden'>
+    <div className='flex w-full justify-start md:hidden'>
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
           <Button variant='outline' size='icon'>
