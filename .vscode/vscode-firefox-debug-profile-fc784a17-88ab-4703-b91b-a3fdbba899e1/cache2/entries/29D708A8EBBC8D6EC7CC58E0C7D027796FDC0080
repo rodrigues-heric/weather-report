@@ -1,0 +1,115 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/mode-toggle.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=e7284969"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+var _s = $RefreshSig$();
+import { Moon, Sun } from "/node_modules/.vite/deps/lucide-react.js?v=e7284969";
+import { Button } from "/src/components/ui/button.tsx";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from "/src/components/ui/dropdown-menu.tsx";
+import { useTheme } from "/src/components/theme-provider.tsx";
+import { useTranslation } from "/node_modules/.vite/deps/react-i18next.js?v=e7284969";
+export function ModeToggle() {
+  _s();
+  const { setTheme } = useTheme();
+  const { t } = useTranslation();
+  return /* @__PURE__ */ jsxDEV(DropdownMenu, { children: [
+    /* @__PURE__ */ jsxDEV(DropdownMenuTrigger, { asChild: true, children: /* @__PURE__ */ jsxDEV(Button, { variant: "outline", size: "icon", className: "cursor-pointer", children: [
+      /* @__PURE__ */ jsxDEV(Sun, { className: "h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" }, void 0, false, {
+        fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/mode-toggle.tsx",
+        lineNumber: 20,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV(Moon, { className: "absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" }, void 0, false, {
+        fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/mode-toggle.tsx",
+        lineNumber: 21,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ jsxDEV("span", { className: "sr-only", children: "Toggle theme" }, void 0, false, {
+        fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/mode-toggle.tsx",
+        lineNumber: 22,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, true, {
+      fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/mode-toggle.tsx",
+      lineNumber: 19,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/mode-toggle.tsx",
+      lineNumber: 18,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ jsxDEV(DropdownMenuContent, { align: "end", children: [
+      /* @__PURE__ */ jsxDEV(DropdownMenuItem, { onClick: () => setTheme("light"), children: t("mode.light") }, void 0, false, {
+        fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/mode-toggle.tsx",
+        lineNumber: 26,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(DropdownMenuItem, { onClick: () => setTheme("dark"), children: t("mode.dark") }, void 0, false, {
+        fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/mode-toggle.tsx",
+        lineNumber: 29,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ jsxDEV(DropdownMenuItem, { onClick: () => setTheme("system"), children: t("mode.system") }, void 0, false, {
+        fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/mode-toggle.tsx",
+        lineNumber: 32,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, true, {
+      fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/mode-toggle.tsx",
+      lineNumber: 25,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/mode-toggle.tsx",
+    lineNumber: 17,
+    columnNumber: 5
+  }, this);
+}
+_s(ModeToggle, "xRXAchxG4AJldaM1HVZru6ZahoM=", false, function() {
+  return [useTheme, useTranslation];
+});
+_c = ModeToggle;
+var _c;
+$RefreshReg$(_c, "ModeToggle");
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("/home/heric/Documentos/weather-report/weather-report/src/components/mode-toggle.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("/home/heric/Documentos/weather-report/weather-report/src/components/mode-toggle.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+function $RefreshReg$(type, id) {
+  return RefreshRuntime.register(type, "/home/heric/Documentos/weather-report/weather-report/src/components/mode-toggle.tsx " + id);
+}
+function $RefreshSig$() {
+  return RefreshRuntime.createSignatureFunctionForTransform();
+}
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6IkFBbUJVOztBQW5CVixTQUFTQSxNQUFNQyxXQUFXO0FBQzFCLFNBQVNDLGNBQWM7QUFDdkI7QUFBQSxFQUNFQztBQUFBQSxFQUNBQztBQUFBQSxFQUNBQztBQUFBQSxFQUNBQztBQUFBQSxPQUNLO0FBQ1AsU0FBU0MsZ0JBQWdCO0FBQ3pCLFNBQVNDLHNCQUFzQjtBQUV4QixnQkFBU0MsYUFBYTtBQUFBQyxLQUFBO0FBQzNCLFFBQU0sRUFBRUMsU0FBUyxJQUFJSixTQUFTO0FBQzlCLFFBQU0sRUFBRUssRUFBRSxJQUFJSixlQUFlO0FBRTdCLFNBQ0UsdUJBQUMsZ0JBQ0M7QUFBQSwyQkFBQyx1QkFBb0IsU0FBTyxNQUMxQixpQ0FBQyxVQUFPLFNBQVEsV0FBVSxNQUFLLFFBQU8sV0FBVSxrQkFDOUM7QUFBQSw2QkFBQyxPQUFJLFdBQVUsMEZBQWY7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQUFxRztBQUFBLE1BQ3JHLHVCQUFDLFFBQUssV0FBVSxrR0FBaEI7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQUE4RztBQUFBLE1BQzlHLHVCQUFDLFVBQUssV0FBVSxXQUFVLDRCQUExQjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBQXNDO0FBQUEsU0FIeEM7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQUlBLEtBTEY7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQU1BO0FBQUEsSUFDQSx1QkFBQyx1QkFBb0IsT0FBTSxPQUN6QjtBQUFBLDZCQUFDLG9CQUFpQixTQUFTLE1BQU1HLFNBQVMsT0FBTyxHQUM5Q0MsWUFBRSxZQUFZLEtBRGpCO0FBQUE7QUFBQTtBQUFBO0FBQUEsYUFFQTtBQUFBLE1BQ0EsdUJBQUMsb0JBQWlCLFNBQVMsTUFBTUQsU0FBUyxNQUFNLEdBQzdDQyxZQUFFLFdBQVcsS0FEaEI7QUFBQTtBQUFBO0FBQUE7QUFBQSxhQUVBO0FBQUEsTUFDQSx1QkFBQyxvQkFBaUIsU0FBUyxNQUFNRCxTQUFTLFFBQVEsR0FDL0NDLFlBQUUsYUFBYSxLQURsQjtBQUFBO0FBQUE7QUFBQTtBQUFBLGFBRUE7QUFBQSxTQVRGO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FVQTtBQUFBLE9BbEJGO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0FtQkE7QUFFSjtBQUFDRixHQTFCZUQsWUFBVTtBQUFBLFVBQ0hGLFVBQ1BDLGNBQWM7QUFBQTtBQUFBSyxLQUZkSjtBQUFVLElBQUFJO0FBQUFDLGFBQUFELElBQUEiLCJuYW1lcyI6WyJNb29uIiwiU3VuIiwiQnV0dG9uIiwiRHJvcGRvd25NZW51IiwiRHJvcGRvd25NZW51Q29udGVudCIsIkRyb3Bkb3duTWVudUl0ZW0iLCJEcm9wZG93bk1lbnVUcmlnZ2VyIiwidXNlVGhlbWUiLCJ1c2VUcmFuc2xhdGlvbiIsIk1vZGVUb2dnbGUiLCJfcyIsInNldFRoZW1lIiwidCIsIl9jIiwiJFJlZnJlc2hSZWckIl0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VzIjpbIm1vZGUtdG9nZ2xlLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBNb29uLCBTdW4gfSBmcm9tICdsdWNpZGUtcmVhY3QnO1xuaW1wb3J0IHsgQnV0dG9uIH0gZnJvbSAnQC9jb21wb25lbnRzL3VpL2J1dHRvbic7XG5pbXBvcnQge1xuICBEcm9wZG93bk1lbnUsXG4gIERyb3Bkb3duTWVudUNvbnRlbnQsXG4gIERyb3Bkb3duTWVudUl0ZW0sXG4gIERyb3Bkb3duTWVudVRyaWdnZXIsXG59IGZyb20gJ0AvY29tcG9uZW50cy91aS9kcm9wZG93bi1tZW51JztcbmltcG9ydCB7IHVzZVRoZW1lIH0gZnJvbSAnQC9jb21wb25lbnRzL3RoZW1lLXByb3ZpZGVyJztcbmltcG9ydCB7IHVzZVRyYW5zbGF0aW9uIH0gZnJvbSAncmVhY3QtaTE4bmV4dCc7XG5cbmV4cG9ydCBmdW5jdGlvbiBNb2RlVG9nZ2xlKCkge1xuICBjb25zdCB7IHNldFRoZW1lIH0gPSB1c2VUaGVtZSgpO1xuICBjb25zdCB7IHQgfSA9IHVzZVRyYW5zbGF0aW9uKCk7XG5cbiAgcmV0dXJuIChcbiAgICA8RHJvcGRvd25NZW51PlxuICAgICAgPERyb3Bkb3duTWVudVRyaWdnZXIgYXNDaGlsZD5cbiAgICAgICAgPEJ1dHRvbiB2YXJpYW50PSdvdXRsaW5lJyBzaXplPSdpY29uJyBjbGFzc05hbWU9J2N1cnNvci1wb2ludGVyJz5cbiAgICAgICAgICA8U3VuIGNsYXNzTmFtZT0naC1bMS4ycmVtXSB3LVsxLjJyZW1dIHNjYWxlLTEwMCByb3RhdGUtMCB0cmFuc2l0aW9uLWFsbCBkYXJrOnNjYWxlLTAgZGFyazotcm90YXRlLTkwJyAvPlxuICAgICAgICAgIDxNb29uIGNsYXNzTmFtZT0nYWJzb2x1dGUgaC1bMS4ycmVtXSB3LVsxLjJyZW1dIHNjYWxlLTAgcm90YXRlLTkwIHRyYW5zaXRpb24tYWxsIGRhcms6c2NhbGUtMTAwIGRhcms6cm90YXRlLTAnIC8+XG4gICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSdzci1vbmx5Jz5Ub2dnbGUgdGhlbWU8L3NwYW4+XG4gICAgICAgIDwvQnV0dG9uPlxuICAgICAgPC9Ecm9wZG93bk1lbnVUcmlnZ2VyPlxuICAgICAgPERyb3Bkb3duTWVudUNvbnRlbnQgYWxpZ249J2VuZCc+XG4gICAgICAgIDxEcm9wZG93bk1lbnVJdGVtIG9uQ2xpY2s9eygpID0+IHNldFRoZW1lKCdsaWdodCcpfT5cbiAgICAgICAgICB7dCgnbW9kZS5saWdodCcpfVxuICAgICAgICA8L0Ryb3Bkb3duTWVudUl0ZW0+XG4gICAgICAgIDxEcm9wZG93bk1lbnVJdGVtIG9uQ2xpY2s9eygpID0+IHNldFRoZW1lKCdkYXJrJyl9PlxuICAgICAgICAgIHt0KCdtb2RlLmRhcmsnKX1cbiAgICAgICAgPC9Ecm9wZG93bk1lbnVJdGVtPlxuICAgICAgICA8RHJvcGRvd25NZW51SXRlbSBvbkNsaWNrPXsoKSA9PiBzZXRUaGVtZSgnc3lzdGVtJyl9PlxuICAgICAgICAgIHt0KCdtb2RlLnN5c3RlbScpfVxuICAgICAgICA8L0Ryb3Bkb3duTWVudUl0ZW0+XG4gICAgICA8L0Ryb3Bkb3duTWVudUNvbnRlbnQ+XG4gICAgPC9Ecm9wZG93bk1lbnU+XG4gICk7XG59XG4iXSwiZmlsZSI6Ii9ob21lL2hlcmljL0RvY3VtZW50b3Mvd2VhdGhlci1yZXBvcnQvd2VhdGhlci1yZXBvcnQvc3JjL2NvbXBvbmVudHMvbW9kZS10b2dnbGUudHN4In0=n∆Rp”      i]–ai]–aI“∑       k    O^partitionKey=%28http%2Clocalhost%29,:http://localhost:5173/src/components/mode-toggle.tsx?t=1767755873825 strongly-framed 1 request-method GET response-head HTTP/1.1 200 OK
+Vary: Origin
+Content-Type: text/javascript
+Cache-Control: no-cache
+Etag: W/"13fb-z9bsV1xEgSYJclW4fMzgsdAf5W0"
+Date: Wed, 07 Jan 2026 03:17:53 GMT
+Content-Length: 8930
+ original-response-headers Vary: Origin
+Content-Type: text/javascript
+Cache-Control: no-cache
+Etag: W/"13fb-z9bsV1xEgSYJclW4fMzgsdAf5W0"
+Date: Wed, 07 Jan 2026 03:17:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Content-Length: 8930
+ ctid 2 net-response-time-onstart 18 net-response-time-onstop 18   "‚

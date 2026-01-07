@@ -63,7 +63,11 @@ export function Login() {
           <CardTitle>{t('login.title')}</CardTitle>
           <CardDescription>{t('login.description')}</CardDescription>
           <CardAction>
-            <Button variant='link' onClick={handleRegister}>
+            <Button
+              variant='link'
+              onClick={handleRegister}
+              className='cursor-pointer'
+            >
               {t('login.register')}
             </Button>
           </CardAction>
@@ -112,7 +116,11 @@ export function Login() {
           </form>
         </CardContent>
         <CardFooter className='flex-col gap-2'>
-          <Button onClick={handleLogin} className='w-full' disabled={isLoading}>
+          <Button
+            onClick={handleLogin}
+            className={`w-full ${!isLoading ? 'cursor-pointer' : 'cursor-progress'}`}
+            disabled={isLoading}
+          >
             {isLoading ? '...' : t('login.loginButton')}
           </Button>
         </CardFooter>

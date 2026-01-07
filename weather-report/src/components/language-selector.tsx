@@ -55,7 +55,10 @@ export function LanguageSelector() {
       <p className='text-muted-foreground text-sm'>{t('language.language')}</p>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
-          <Button variant='outline' className='w-[150px] justify-start'>
+          <Button
+            variant='outline'
+            className='w-[150px] cursor-pointer justify-start'
+          >
             {selectedStatus?.label || currentStatus?.label || currentLanguage}
           </Button>
         </PopoverTrigger>
@@ -67,6 +70,7 @@ export function LanguageSelector() {
               <CommandGroup>
                 {statuses.map(status => (
                   <CommandItem
+                    className='cursor-pointer'
                     key={status.value}
                     value={status.label}
                     onSelect={selectedLabel => {

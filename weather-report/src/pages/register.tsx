@@ -75,7 +75,11 @@ export function Register() {
           <CardTitle>{t('register.title')}</CardTitle>
           <CardDescription>{t('register.description')}</CardDescription>
           <CardAction>
-            <Button variant='link' onClick={handleSignIn}>
+            <Button
+              variant='link'
+              onClick={handleSignIn}
+              className='cursor-pointer'
+            >
               {t('register.alreadyHaveAccount')}
             </Button>
           </CardAction>
@@ -132,7 +136,7 @@ export function Register() {
         <CardFooter className='flex-col gap-2'>
           <Button
             onClick={handleRegister}
-            className='w-full'
+            className={`w-full ${!isLoading ? 'cursor-pointer' : 'cursor-progress'}`}
             disabled={isLoading}
           >
             {isLoading ? '...' : t('register.registerButton')}

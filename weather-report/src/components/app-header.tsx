@@ -26,7 +26,7 @@ export function AppHeader() {
             variant='outline'
             size='sm'
             onClick={logout}
-            className='gap-2'
+            className='cursor-pointer gap-2'
           >
             <LogOut className='h-4 w-4' />
             {t('header.logout')}
