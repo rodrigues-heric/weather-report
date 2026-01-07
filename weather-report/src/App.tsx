@@ -1,6 +1,6 @@
 import { ThemeProvider } from './components/theme-provider';
 import { Login } from './pages/login';
-import { ModeToggle } from './components/mode-toggle';
+import { Register } from './pages/register';
 import {
   Route,
   RouterProvider,
@@ -8,14 +8,19 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 import { Home } from './pages/home';
-import { LanguageSelector } from './components/language-selector';
 import { WeatherDataProvider } from './contexts/weather-data-context';
+import { AuthProvider } from './contexts/auth-context';
+import { ProtectedRoute } from './components/protected-route';
+import { AppHeader } from './components/app-header';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path='/' element={<Home />} />
+      <Route element={<ProtectedRoute />}>
+        <Route path='/' element={<Home />} />
+      </Route>
       <Route path='/login' element={<Login />} />
+      <Route path='/register' element={<Register />} />
     </>
   )
 );
@@ -24,16 +29,15 @@ export default function App() {
   return (
     <ThemeProvider defaultTheme='dark' storageKey='vite-ui-theme'>
       <WeatherDataProvider>
-        <div className='flex flex-col p-4'>
-          <header className='mb-4 flex items-center justify-between'>
-            <LanguageSelector />
-            <ModeToggle />
-          </header>
+        <AuthProvider>
+          <div className='flex flex-col p-4'>
+            <AppHeader />
 
-          <main className='flex'>
-            <RouterProvider router={router} />
-          </main>
-        </div>
+            <main className='flex'>
+              <RouterProvider router={router} />
+            </main>
+          </div>
+        </AuthProvider>
       </WeatherDataProvider>
     </ThemeProvider>
   );

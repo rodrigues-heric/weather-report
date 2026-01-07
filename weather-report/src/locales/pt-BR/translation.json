@@ -1,4 +1,8 @@
 {
+  "header": {
+    "hello": "Olá",
+    "logout": "Sair"
+  },
   "language": {
     "language": "Idioma",
     "selectLanguage": "Selecionar Idioma",
@@ -10,12 +14,28 @@
     "title": "Login na Sua Conta",
     "description": "Por favor, insira suas credenciais para acessar sua conta",
     "email": "Email",
-    "emailPlaceholder": "usuario@exemplo.com",
+    "emailPlaceholder": "seu_usuario",
     "password": "Senha",
     "submit": "Entrar",
     "forgotPassword": "Esqueceu a Senha?",
     "register": "Cadastrar",
-    "loginButton": "Entrar"
+    "loginButton": "Entrar",
+    "requiredFields": "Todos os campos são obrigatórios",
+    "errorMessage": "Erro ao fazer login. Por favor, tente novamente."
+  },
+  "register": {
+    "title": "Criar Conta",
+    "description": "Crie sua conta para começar",
+    "username": "Usuário",
+    "usernamePlaceholder": "seu_usuario",
+    "password": "Senha",
+    "confirmPassword": "Confirmar Senha",
+    "registerButton": "Cadastrar",
+    "alreadyHaveAccount": "Login",
+    "requiredFields": "Todos os campos são obrigatórios",
+    "passwordsNotMatch": "As senhas não coincidem",
+    "passwordMinLength": "A senha deve ter pelo menos 6 caracteres",
+    "errorMessage": "Erro ao criar conta. Por favor, tente novamente."
   },
   "week": {
     "sunday": "Domingo",
