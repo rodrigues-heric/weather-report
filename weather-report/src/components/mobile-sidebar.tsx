@@ -1,8 +1,9 @@
-import { LogOut, Menu } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from './ui/button';
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
   SheetFooter,
@@ -50,11 +51,13 @@ export function MobileSidebar() {
               <Button
                 variant='destructive'
                 onClick={logout}
-                className='w-full justify-start gap-2'
+                className='w-full gap-2 justify-self-center'
               >
-                <LogOut className='h-4 w-4' />
                 {t('header.logout')}
               </Button>
+              <SheetClose asChild>
+                <Button variant='outline'>{t('actions.close')}</Button>
+              </SheetClose>
             </SheetFooter>
           )}
         </SheetContent>

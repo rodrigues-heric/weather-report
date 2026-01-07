@@ -1,4 +1,7 @@
 {
+  "actions": {
+    "close": "Fechar"
+  },
   "header": {
     "hello": "Olá",
     "logout": "Sair"
