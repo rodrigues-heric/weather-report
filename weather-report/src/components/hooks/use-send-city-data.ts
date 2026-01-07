@@ -24,6 +24,7 @@ export function useSendCityData(cityData: City | null, lang: string = 'en') {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({
           name: cityData.name,
           country: cityData.country,

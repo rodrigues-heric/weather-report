@@ -26,7 +26,7 @@ import { User } from './auth/entities/user.entity';
       database: process.env.DB_NAME || 'weather_db',
       entities: [User],
       synchronize: process.env.NODE_ENV !== 'production',
-      logging: process.env.NODE_ENV === 'development',
+      logging: false,
     }),
     CityModule,
     AuthModule,

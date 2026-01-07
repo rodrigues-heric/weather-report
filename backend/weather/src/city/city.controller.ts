@@ -8,7 +8,6 @@ import {
 } from '@nestjs/common';
 import { CityService } from './city.service';
 import { City } from './schemas/city.schema';
-import { CityDto } from './dto/city.dto';
 import { CityFetchDto } from './dto/city-fetch.dto';
 import { JwtAuthGuard } from 'src/auth/auth.guard';
 
@@ -23,11 +22,5 @@ export class CityController {
     @Body() cityFetchPayload: CityFetchDto,
   ): Promise<City | null> {
     return this.cityService.fetchCityData(cityFetchPayload);
-  }
-
-  @Post()
-  @HttpCode(HttpStatus.CREATED)
-  async createOrUpdateCity(@Body() cityDTO: CityDto): Promise<City | null> {
-    return this.cityService.createOrUpdateCity(cityDTO);
   }
 }
