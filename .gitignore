@@ -169,6 +169,7 @@ vite.config.ts.timestamp-*
 /backend/weather/*.sublime-workspace
 
 # IDE - VSCode
+/.vscode/*
 /backend/weather/.vscode/*
 /backend/weather/!.vscode/settings.json
 /backend/weather/!.vscode/tasks.json
