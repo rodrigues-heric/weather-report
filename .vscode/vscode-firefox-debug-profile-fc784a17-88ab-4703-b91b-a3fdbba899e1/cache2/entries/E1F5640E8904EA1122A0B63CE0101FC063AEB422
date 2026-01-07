@@ -1,0 +1,292 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/weather-week-graph.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=e7284969"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+var _s = $RefreshSig$();
+import { Calendar } from "/node_modules/.vite/deps/lucide-react.js?v=e7284969";
+import { Card } from "/src/components/card.tsx";
+import { CardHeader } from "/src/components/card-header.tsx";
+import { CardContent } from "/src/components/card-content.tsx";
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis
+} from "/node_modules/.vite/deps/recharts.js?v=e7284969";
+import { useTranslation } from "/node_modules/.vite/deps/react-i18next.js?v=e7284969";
+import { getWeekDay } from "/src/utils/dates.ts";
+export function WeatherWeekGraph({
+  weatherData,
+  chartColorMax,
+  chartColorMin,
+  gridColor,
+  theme
+}) {
+  _s();
+  const { t } = useTranslation();
+  let chartData = [];
+  weatherData.forecast.forEach((day) => {
+    const weekDay = getWeekDay(day.date).slice(0, 3);
+    const info = {
+      day: t("weekDays." + weekDay),
+      min: Math.round(day.minTemperature),
+      max: Math.round(day.maxTemperature)
+    };
+    chartData.push(info);
+  });
+  return /* @__PURE__ */ jsxDEV(Card, { className: "flex flex-col xl:col-span-2", children: [
+    /* @__PURE__ */ jsxDEV(
+      CardHeader,
+      {
+        title: t("weather.7DayVariation"),
+        icon: /* @__PURE__ */ jsxDEV(Calendar, { size: 18 }, void 0, false, {
+          fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx",
+          lineNumber: 49,
+          columnNumber: 15
+        }, this)
+      },
+      void 0,
+      false,
+      {
+        fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx",
+        lineNumber: 47,
+        columnNumber: 7
+      },
+      this
+    ),
+    /* @__PURE__ */ jsxDEV(CardContent, { className: "min-h-0 flex-1", children: /* @__PURE__ */ jsxDEV("div", { className: "h-64 xl:h-full", children: /* @__PURE__ */ jsxDEV(ResponsiveContainer, { width: "100%", height: "100%", children: /* @__PURE__ */ jsxDEV(
+      AreaChart,
+      {
+        data: chartData,
+        margin: { top: 10, right: 10, left: -20, bottom: 30 },
+        children: [
+          /* @__PURE__ */ jsxDEV("defs", { children: /* @__PURE__ */ jsxDEV("linearGradient", { id: "colorMax", x1: "0", y1: "0", x2: "0", y2: "1", children: [
+            /* @__PURE__ */ jsxDEV(
+              "stop",
+              {
+                offset: "5%",
+                stopColor: chartColorMax,
+                stopOpacity: 0.3
+              },
+              void 0,
+              false,
+              {
+                fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx",
+                lineNumber: 60,
+                columnNumber: 19
+              },
+              this
+            ),
+            /* @__PURE__ */ jsxDEV(
+              "stop",
+              {
+                offset: "95%",
+                stopColor: chartColorMax,
+                stopOpacity: 0
+              },
+              void 0,
+              false,
+              {
+                fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx",
+                lineNumber: 65,
+                columnNumber: 19
+              },
+              this
+            )
+          ] }, void 0, true, {
+            fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx",
+            lineNumber: 59,
+            columnNumber: 17
+          }, this) }, void 0, false, {
+            fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx",
+            lineNumber: 58,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ jsxDEV(
+            CartesianGrid,
+            {
+              strokeDasharray: "3 3",
+              vertical: false,
+              stroke: gridColor,
+              opacity: 0.4
+            },
+            void 0,
+            false,
+            {
+              fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx",
+              lineNumber: 72,
+              columnNumber: 15
+            },
+            this
+          ),
+          /* @__PURE__ */ jsxDEV(
+            XAxis,
+            {
+              dataKey: "day",
+              axisLine: false,
+              tickLine: false,
+              tick: { fill: "currentColor", opacity: 0.5 },
+              dy: 10,
+              interval: 0,
+              angle: -25,
+              textAnchor: "end"
+            },
+            void 0,
+            false,
+            {
+              fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx",
+              lineNumber: 78,
+              columnNumber: 15
+            },
+            this
+          ),
+          /* @__PURE__ */ jsxDEV(
+            YAxis,
+            {
+              axisLine: false,
+              tickLine: false,
+              tick: { fill: "currentColor", opacity: 0.5 }
+            },
+            void 0,
+            false,
+            {
+              fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx",
+              lineNumber: 88,
+              columnNumber: 15
+            },
+            this
+          ),
+          /* @__PURE__ */ jsxDEV(
+            Tooltip,
+            {
+              contentStyle: {
+                backgroundColor: theme === "dark" ? "#1f2937" : "#fff",
+                borderColor: theme === "dark" ? "#374151" : "#e5e7eb",
+                borderRadius: "8px",
+                boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)"
+              }
+            },
+            void 0,
+            false,
+            {
+              fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx",
+              lineNumber: 93,
+              columnNumber: 15
+            },
+            this
+          ),
+          /* @__PURE__ */ jsxDEV(
+            Area,
+            {
+              type: "monotone",
+              dataKey: "max",
+              stroke: chartColorMax,
+              strokeWidth: 3,
+              fillOpacity: 1,
+              fill: "url(#colorMax)",
+              name: t("weather.max")
+            },
+            void 0,
+            false,
+            {
+              fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx",
+              lineNumber: 101,
+              columnNumber: 15
+            },
+            this
+          ),
+          /* @__PURE__ */ jsxDEV(
+            Area,
+            {
+              type: "monotone",
+              dataKey: "min",
+              stroke: chartColorMin,
+              strokeWidth: 2,
+              fill: "transparent",
+              strokeDasharray: "4 4",
+              name: t("weather.min")
+            },
+            void 0,
+            false,
+            {
+              fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx",
+              lineNumber: 110,
+              columnNumber: 15
+            },
+            this
+          )
+        ]
+      },
+      void 0,
+      true,
+      {
+        fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx",
+        lineNumber: 54,
+        columnNumber: 13
+      },
+      this
+    ) }, void 0, false, {
+      fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx",
+      lineNumber: 53,
+      columnNumber: 11
+    }, this) }, void 0, false, {
+      fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx",
+      lineNumber: 52,
+      columnNumber: 9
+    }, this) }, void 0, false, {
+      fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx",
+      lineNumber: 51,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, true, {
+    fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx",
+    lineNumber: 46,
+    columnNumber: 5
+  }, this);
+}
+_s(WeatherWeekGraph, "zlIdU9EjM2llFt74AbE2KsUJXyM=", false, function() {
+  return [useTranslation];
+});
+_c = WeatherWeekGraph;
+var _c;
+$RefreshReg$(_c, "WeatherWeekGraph");
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+function $RefreshReg$(type, id) {
+  return RefreshRuntime.register(type, "/home/heric/Documentos/weather-report/weather-report/src/components/weather-week-graph.tsx " + id);
+}
+function $RefreshSig$() {
+  return RefreshRuntime.createSignatureFunctionForTransform();
+}
+
+//# sourceMappingURL=data:application/json;base64,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O0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBLElBaUVBLEtBbEVGO0FBQUE7QUFBQTtBQUFBO0FBQUEsV0FtRUEsS0FwRUY7QUFBQTtBQUFBO0FBQUE7QUFBQSxXQXFFQSxLQXRFRjtBQUFBO0FBQUE7QUFBQTtBQUFBLFdBdUVBO0FBQUEsT0E1RUY7QUFBQTtBQUFBO0FBQUE7QUFBQSxTQTZFQTtBQUVKO0FBQUNELEdBM0dlTixrQkFBZ0I7QUFBQSxVQWFoQkYsY0FBYztBQUFBO0FBQUFtQyxLQWJkakM7QUFBZ0IsSUFBQWlDO0FBQUFDLGFBQUFELElBQUEiLCJuYW1lcyI6WyJDYWxlbmRhciIsIkNhcmQiLCJDYXJkSGVhZGVyIiwiQ2FyZENvbnRlbnQiLCJBcmVhIiwiQXJlYUNoYXJ0IiwiQ2FydGVzaWFuR3JpZCIsIlJlc3BvbnNpdmVDb250YWluZXIiLCJUb29sdGlwIiwiWEF4aXMiLCJZQXhpcyIsInVzZVRyYW5zbGF0aW9uIiwiZ2V0V2Vla0RheSIsIldlYXRoZXJXZWVrR3JhcGgiLCJ3ZWF0aGVyRGF0YSIsImNoYXJ0Q29sb3JNYXgiLCJjaGFydENvbG9yTWluIiwiZ3JpZENvbG9yIiwidGhlbWUiLCJfcyIsInQiLCJjaGFydERhdGEiLCJmb3JlY2FzdCIsImZvckVhY2giLCJkYXkiLCJ3ZWVrRGF5IiwiZGF0ZSIsInNsaWNlIiwiaW5mbyIsIm1pbiIsIk1hdGgiLCJyb3VuZCIsIm1pblRlbXBlcmF0dXJlIiwibWF4IiwibWF4VGVtcGVyYXR1cmUiLCJwdXNoIiwidG9wIiwicmlnaHQiLCJsZWZ0IiwiYm90dG9tIiwiZmlsbCIsIm9wYWNpdHkiLCJiYWNrZ3JvdW5kQ29sb3IiLCJib3JkZXJDb2xvciIsImJvcmRlclJhZGl1cyIsImJveFNoYWRvdyIsIl9jIiwiJFJlZnJlc2hSZWckIl0sImlnbm9yZUxpc3QiOltdLCJzb3VyY2VzIjpbIndlYXRoZXItd2Vlay1ncmFwaC50c3giXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQ2FsZW5kYXIgfSBmcm9tICdsdWNpZGUtcmVhY3QnO1xuaW1wb3J0IHsgQ2FyZCB9IGZyb20gJy4vY2FyZCc7XG5pbXBvcnQgeyBDYXJkSGVhZGVyIH0gZnJvbSAnLi9jYXJkLWhlYWRlcic7XG5pbXBvcnQgeyBDYXJkQ29udGVudCB9IGZyb20gJy4vY2FyZC1jb250ZW50JztcbmltcG9ydCB7XG4gIEFyZWEsXG4gIEFyZWFDaGFydCxcbiAgQ2FydGVzaWFuR3JpZCxcbiAgUmVzcG9uc2l2ZUNvbnRhaW5lcixcbiAgVG9vbHRpcCxcbiAgWEF4aXMsXG4gIFlBeGlzLFxufSBmcm9tICdyZWNoYXJ0cyc7XG5pbXBvcnQgeyB1c2VUcmFuc2xhdGlvbiB9IGZyb20gJ3JlYWN0LWkxOG5leHQnO1xuaW1wb3J0IHR5cGUgeyBXZWF0aGVyRGF0YSB9IGZyb20gJ0AvY29udGV4dHMvd2VhdGhlci1kYXRhLWNvbnRleHQnO1xuaW1wb3J0IHsgZ2V0V2Vla0RheSB9IGZyb20gJ0AvdXRpbHMvZGF0ZXMnO1xuXG5leHBvcnQgZnVuY3Rpb24gV2VhdGhlcldlZWtHcmFwaCh7XG4gIHdlYXRoZXJEYXRhLFxuICBjaGFydENvbG9yTWF4LFxuICBjaGFydENvbG9yTWluLFxuICBncmlkQ29sb3IsXG4gIHRoZW1lLFxufToge1xuICB3ZWF0aGVyRGF0YTogV2VhdGhlckRhdGE7XG4gIGNoYXJ0Q29sb3JNYXg6IHN0cmluZztcbiAgY2hhcnRDb2xvck1pbjogc3RyaW5nO1xuICBncmlkQ29sb3I6IHN0cmluZztcbiAgdGhlbWU6IHN0cmluZztcbn0pIHtcbiAgY29uc3QgeyB0IH0gPSB1c2VUcmFuc2xhdGlvbigpO1xuXG4gIGxldCBjaGFydERhdGE6IHsgZGF5OiBzdHJpbmc7IG1pbjogbnVtYmVyOyBtYXg6IG51bWJlciB9W10gPSBbXTtcbiAgd2VhdGhlckRhdGEuZm9yZWNhc3QuZm9yRWFjaChkYXkgPT4ge1xuICAgIGNvbnN0IHdlZWtEYXkgPSBnZXRXZWVrRGF5KGRheS5kYXRlKS5zbGljZSgwLCAzKTtcblxuICAgIGNvbnN0IGluZm8gPSB7XG4gICAgICBkYXk6IHQoJ3dlZWtEYXlzLicgKyB3ZWVrRGF5KSxcbiAgICAgIG1pbjogTWF0aC5yb3VuZChkYXkubWluVGVtcGVyYXR1cmUpLFxuICAgICAgbWF4OiBNYXRoLnJvdW5kKGRheS5tYXhUZW1wZXJhdHVyZSksXG4gICAgfTtcbiAgICBjaGFydERhdGEucHVzaChpbmZvKTtcbiAgfSk7XG5cbiAgcmV0dXJuIChcbiAgICA8Q2FyZCBjbGFzc05hbWU9J2ZsZXggZmxleC1jb2wgeGw6Y29sLXNwYW4tMic+XG4gICAgICA8Q2FyZEhlYWRlclxuICAgICAgICB0aXRsZT17dCgnd2VhdGhlci43RGF5VmFyaWF0aW9uJyl9XG4gICAgICAgIGljb249ezxDYWxlbmRhciBzaXplPXsxOH0gLz59XG4gICAgICAvPlxuICAgICAgPENhcmRDb250ZW50IGNsYXNzTmFtZT0nbWluLWgtMCBmbGV4LTEnPlxuICAgICAgICA8ZGl2IGNsYXNzTmFtZT0naC02NCB4bDpoLWZ1bGwnPlxuICAgICAgICAgIDxSZXNwb25zaXZlQ29udGFpbmVyIHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnPlxuICAgICAgICAgICAgPEFyZWFDaGFydFxuICAgICAgICAgICAgICBkYXRhPXtjaGFydERhdGF9XG4gICAgICAgICAgICAgIG1hcmdpbj17eyB0b3A6IDEwLCByaWdodDogMTAsIGxlZnQ6IC0yMCwgYm90dG9tOiAzMCB9fVxuICAgICAgICAgICAgPlxuICAgICAgICAgICAgICA8ZGVmcz5cbiAgICAgICAgICAgICAgICA8bGluZWFyR3JhZGllbnQgaWQ9J2NvbG9yTWF4JyB4MT0nMCcgeTE9JzAnIHgyPScwJyB5Mj0nMSc+XG4gICAgICAgICAgICAgICAgICA8c3RvcFxuICAgICAgICAgICAgICAgICAgICBvZmZzZXQ9JzUlJ1xuICAgICAgICAgICAgICAgICAgICBzdG9wQ29sb3I9e2NoYXJ0Q29sb3JNYXh9XG4gICAgICAgICAgICAgICAgICAgIHN0b3BPcGFjaXR5PXswLjN9XG4gICAgICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICAgICAgPHN0b3BcbiAgICAgICAgICAgICAgICAgICAgb2Zmc2V0PSc5NSUnXG4gICAgICAgICAgICAgICAgICAgIHN0b3BDb2xvcj17Y2hhcnRDb2xvck1heH1cbiAgICAgICAgICAgICAgICAgICAgc3RvcE9wYWNpdHk9ezB9XG4gICAgICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICAgIDwvbGluZWFyR3JhZGllbnQ+XG4gICAgICAgICAgICAgIDwvZGVmcz5cbiAgICAgICAgICAgICAgPENhcnRlc2lhbkdyaWRcbiAgICAgICAgICAgICAgICBzdHJva2VEYXNoYXJyYXk9JzMgMydcbiAgICAgICAgICAgICAgICB2ZXJ0aWNhbD17ZmFsc2V9XG4gICAgICAgICAgICAgICAgc3Ryb2tlPXtncmlkQ29sb3J9XG4gICAgICAgICAgICAgICAgb3BhY2l0eT17MC40fVxuICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICA8WEF4aXNcbiAgICAgICAgICAgICAgICBkYXRhS2V5PSdkYXknXG4gICAgICAgICAgICAgICAgYXhpc0xpbmU9e2ZhbHNlfVxuICAgICAgICAgICAgICAgIHRpY2tMaW5lPXtmYWxzZX1cbiAgICAgICAgICAgICAgICB0aWNrPXt7IGZpbGw6ICdjdXJyZW50Q29sb3InLCBvcGFjaXR5OiAwLjUgfX1cbiAgICAgICAgICAgICAgICBkeT17MTB9XG4gICAgICAgICAgICAgICAgaW50ZXJ2YWw9ezB9XG4gICAgICAgICAgICAgICAgYW5nbGU9ey0yNX1cbiAgICAgICAgICAgICAgICB0ZXh0QW5jaG9yPSdlbmQnXG4gICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICAgIDxZQXhpc1xuICAgICAgICAgICAgICAgIGF4aXNMaW5lPXtmYWxzZX1cbiAgICAgICAgICAgICAgICB0aWNrTGluZT17ZmFsc2V9XG4gICAgICAgICAgICAgICAgdGljaz17eyBmaWxsOiAnY3VycmVudENvbG9yJywgb3BhY2l0eTogMC41IH19XG4gICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICAgIDxUb29sdGlwXG4gICAgICAgICAgICAgICAgY29udGVudFN0eWxlPXt7XG4gICAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kQ29sb3I6IHRoZW1lID09PSAnZGFyaycgPyAnIzFmMjkzNycgOiAnI2ZmZicsXG4gICAgICAgICAgICAgICAgICBib3JkZXJDb2xvcjogdGhlbWUgPT09ICdkYXJrJyA/ICcjMzc0MTUxJyA6ICcjZTVlN2ViJyxcbiAgICAgICAgICAgICAgICAgIGJvcmRlclJhZGl1czogJzhweCcsXG4gICAgICAgICAgICAgICAgICBib3hTaGFkb3c6ICcwIDRweCA2cHggLTFweCByZ2IoMCAwIDAgLyAwLjEpJyxcbiAgICAgICAgICAgICAgICB9fVxuICAgICAgICAgICAgICAvPlxuICAgICAgICAgICAgICA8QXJlYVxuICAgICAgICAgICAgICAgIHR5cGU9J21vbm90b25lJ1xuICAgICAgICAgICAgICAgIGRhdGFLZXk9J21heCdcbiAgICAgICAgICAgICAgICBzdHJva2U9e2NoYXJ0Q29sb3JNYXh9XG4gICAgICAgICAgICAgICAgc3Ryb2tlV2lkdGg9ezN9XG4gICAgICAgICAgICAgICAgZmlsbE9wYWNpdHk9ezF9XG4gICAgICAgICAgICAgICAgZmlsbD0ndXJsKCNjb2xvck1heCknXG4gICAgICAgICAgICAgICAgbmFtZT17dCgnd2VhdGhlci5tYXgnKX1cbiAgICAgICAgICAgICAgLz5cbiAgICAgICAgICAgICAgPEFyZWFcbiAgICAgICAgICAgICAgICB0eXBlPSdtb25vdG9uZSdcbiAgICAgICAgICAgICAgICBkYXRhS2V5PSdtaW4nXG4gICAgICAgICAgICAgICAgc3Ryb2tlPXtjaGFydENvbG9yTWlufVxuICAgICAgICAgICAgICAgIHN0cm9rZVdpZHRoPXsyfVxuICAgICAgICAgICAgICAgIGZpbGw9J3RyYW5zcGFyZW50J1xuICAgICAgICAgICAgICAgIHN0cm9rZURhc2hhcnJheT0nNCA0J1xuICAgICAgICAgICAgICAgIG5hbWU9e3QoJ3dlYXRoZXIubWluJyl9XG4gICAgICAgICAgICAgIC8+XG4gICAgICAgICAgICA8L0FyZWFDaGFydD5cbiAgICAgICAgICA8L1Jlc3BvbnNpdmVDb250YWluZXI+XG4gICAgICAgIDwvZGl2PlxuICAgICAgPC9DYXJkQ29udGVudD5cbiAgICA8L0NhcmQ+XG4gICk7XG59XG4iXSwiZmlsZSI6Ii9ob21lL2hlcmljL0RvY3VtZW50b3Mvd2VhdGhlci1yZXBvcnQvd2VhdGhlci1yZXBvcnQvc3JjL2NvbXBvbmVudHMvd2VhdGhlci13ZWVrLWdyYXBoLnRzeCJ9¿ºA%ü¥      i]Êdi]ÊdIõÕ       b    O^partitionKey=%28http%2Clocalhost%29,:http://localhost:5173/src/components/weather-week-graph.tsx strongly-framed 1 request-method GET response-head HTTP/1.1 200 OK
+Content-Type: text/javascript
+Cache-Control: no-cache
+Etag: W/"265b-qqc0s4npxBWP1X++0hkCNU/wk6A"
+Content-Length: 19794
+Date: Wed, 07 Jan 2026 02:52:20 GMT
+Vary: Origin
+ original-response-headers Vary: Origin
+Content-Type: text/javascript
+Cache-Control: no-cache
+Etag: W/"265b-qqc0s4npxBWP1X++0hkCNU/wk6A"
+Date: Wed, 07 Jan 2026 02:21:13 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Content-Length: 19794
+ ctid 2 net-response-time-onstart 13 net-response-time-onstop 14   MR

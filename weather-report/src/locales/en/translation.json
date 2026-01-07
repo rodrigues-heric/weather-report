@@ -1,4 +1,8 @@
 {
+  "header": {
+    "hello": "Hello",
+    "logout": "Logout"
+  },
   "language": {
     "language": "Language",
     "selectLanguage": "Select Language",
@@ -10,12 +14,28 @@
     "title": "Login to Your Account",
     "description": "Please enter your credentials to access your account",
     "email": "Email",
-    "emailPlaceholder": "user@example.com",
+    "emailPlaceholder": "your_username",
     "password": "Password",
     "submit": "Login",
     "forgotPassword": "Forgot Password?",
     "register": "Sign Up",
-    "loginButton": "Login"
+    "loginButton": "Login",
+    "requiredFields": "All fields are required",
+    "errorMessage": "Error logging in. Please try again."
+  },
+  "register": {
+    "title": "Create Account",
+    "description": "Create your account to get started",
+    "username": "Username",
+    "usernamePlaceholder": "your_username",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "registerButton": "Register",
+    "alreadyHaveAccount": "Sign In",
+    "requiredFields": "All fields are required",
+    "passwordsNotMatch": "Passwords do not match",
+    "passwordMinLength": "Password must be at least 6 characters",
+    "errorMessage": "Error creating account. Please try again."
   },
   "week": {
     "sunday": "Sunday",

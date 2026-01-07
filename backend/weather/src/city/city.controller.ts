@@ -1,26 +1,22 @@
 import {
   Body,
   Controller,
-  Get,
   HttpCode,
   HttpStatus,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { CityService } from './city.service';
 import { City } from './schemas/city.schema';
 import { CityDto } from './dto/city.dto';
 import { CityFetchDto } from './dto/city-fetch.dto';
+import { JwtAuthGuard } from 'src/auth/auth.guard';
 
 @Controller('/city')
 export class CityController {
   constructor(private readonly cityService: CityService) {}
 
-  @Get('/all')
-  @HttpCode(HttpStatus.OK)
-  async findAll(): Promise<City[]> {
-    return this.cityService.findAll();
-  }
-
+  @UseGuards(JwtAuthGuard)
   @Post('/fetch')
   @HttpCode(HttpStatus.OK)
   async fetchCityData(

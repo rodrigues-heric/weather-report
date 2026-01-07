@@ -12,36 +12,76 @@ import {
 import { Input } from '../components/ui/input';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from '../contexts/auth-context';
+import { useEffect, useState } from 'react';
+
+const HOME_PATH = '/';
+const REGISTER_PATH = '/register';
 
 export function Login() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { login, error, user } = useAuth();
 
-  const handleLogin = () => {
-    navigate('/');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [localError, setLocalError] = useState('');
+
+  useEffect(() => {
+    if (user) {
+      navigate(HOME_PATH, { replace: true });
+    }
+  }, [user, navigate]);
+
+  const handleLogin = async (e?: React.FormEvent) => {
+    e?.preventDefault();
+    setLocalError('');
+
+    if (!username || !password) {
+      setLocalError(t('login.requiredFields'));
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      await login(username, password);
+    } catch (err) {
+      setLocalError(t('login.errorMessage'));
+      setIsLoading(false);
+    }
+  };
+
+  const handleRegister = () => {
+    navigate(REGISTER_PATH);
   };
 
   return (
     <div className='flex min-h-screen w-full items-center justify-center p-4'>
-      <Card className='w-full max-w-sm'>
+      <Card className='w-full max-w-sm py-6'>
         <CardHeader>
           <CardTitle>{t('login.title')}</CardTitle>
           <CardDescription>{t('login.description')}</CardDescription>
           <CardAction>
-            <Button variant='link'>{t('login.register')}</Button>
+            <Button variant='link' onClick={handleRegister}>
+              {t('login.register')}
+            </Button>
           </CardAction>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleLogin}>
             <div className='flex flex-col gap-6'>
               <div className='grid gap-2'>
-                <Label htmlFor='email'>{t('login.email')}</Label>
+                <Label htmlFor='username'>{t('login.email')}</Label>
                 <Input
-                  id='email'
-                  type='email'
+                  id='username'
+                  type='text'
                   placeholder={t('login.emailPlaceholder')}
+                  value={username}
+                  onChange={e => setUsername(e.target.value)}
+                  disabled={isLoading}
                   required
-                ></Input>
+                />
               </div>
               <div className='grid gap-2'>
                 <div className='flex items-center'>
@@ -57,15 +97,23 @@ export function Login() {
                   id='password'
                   type='password'
                   placeholder='*******'
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
+                  disabled={isLoading}
                   required
-                ></Input>
+                />
               </div>
+              {(localError || error) && (
+                <div className='text-sm text-red-500'>
+                  {localError || error}
+                </div>
+              )}
             </div>
           </form>
         </CardContent>
         <CardFooter className='flex-col gap-2'>
-          <Button onClick={handleLogin} className='w-full'>
-            {t('login.loginButton')}
+          <Button onClick={handleLogin} className='w-full' disabled={isLoading}>
+            {isLoading ? '...' : t('login.loginButton')}
           </Button>
         </CardFooter>
       </Card>

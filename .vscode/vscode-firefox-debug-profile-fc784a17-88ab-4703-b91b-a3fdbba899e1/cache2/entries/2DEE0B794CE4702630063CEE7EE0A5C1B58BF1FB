@@ -1,0 +1,128 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/contexts/auth-context.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=e7284969"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+var _s = $RefreshSig$(), _s2 = $RefreshSig$();
+import __vite__cjsImport1_react from "/node_modules/.vite/deps/react.js?v=e7284969"; const createContext = __vite__cjsImport1_react["createContext"]; const useState = __vite__cjsImport1_react["useState"]; const useEffect = __vite__cjsImport1_react["useEffect"]; const useContext = __vite__cjsImport1_react["useContext"];
+import api from "/src/services/api.ts";
+const AuthContext = createContext({});
+export const AuthProvider = ({ children }) => {
+  _s();
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    async function checkLogin() {
+      try {
+        const response = await api.get("/auth/me");
+        setUser(response.data);
+      } catch (error2) {
+        setUser(null);
+      } finally {
+        setLoading(false);
+      }
+    }
+    checkLogin();
+  }, []);
+  const login = async (username, password) => {
+    try {
+      setError(null);
+      await api.post("/auth/login", {
+        username,
+        password
+      });
+      const response = await api.get("/auth/me");
+      setUser(response.data);
+    } catch (err) {
+      const errorMsg = err.response?.data?.message || err.response?.data?.error;
+      setError(errorMsg);
+      throw err;
+    }
+  };
+  const register = async (username, password) => {
+    try {
+      setError(null);
+      await api.post("/auth/register", {
+        username,
+        password
+      });
+    } catch (err) {
+      const errorMsg = err.response?.data?.message || err.response?.data?.error || "Erro ao registrar";
+      setError(errorMsg);
+      throw err;
+    }
+  };
+  const logout = async () => {
+    await api.post("/auth/logout");
+    setUser(null);
+  };
+  return /* @__PURE__ */ jsxDEV(
+    AuthContext.Provider,
+    {
+      value: {
+        user,
+        loading,
+        authenticated: !!user,
+        login,
+        register,
+        logout,
+        error
+      },
+      children
+    },
+    void 0,
+    false,
+    {
+      fileName: "/home/heric/Documentos/weather-report/weather-report/src/contexts/auth-context.tsx",
+      lineNumber: 79,
+      columnNumber: 5
+    },
+    this
+  );
+};
+_s(AuthProvider, "PA9FxEY9xSNRrsSqaLtbYei52Hs=");
+_c = AuthProvider;
+export const useAuth = () => {
+  _s2();
+  return useContext(AuthContext);
+};
+_s2(useAuth, "gDsCjeeItUuvgOWf1v4qoK9RF6k=");
+var _c;
+$RefreshReg$(_c, "AuthProvider");
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("/home/heric/Documentos/weather-report/weather-report/src/contexts/auth-context.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("/home/heric/Documentos/weather-report/weather-report/src/contexts/auth-context.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+function $RefreshReg$(type, id) {
+  return RefreshRuntime.register(type, "/home/heric/Documentos/weather-report/weather-report/src/contexts/auth-context.tsx " + id);
+}
+function $RefreshSig$() {
+  return RefreshRuntime.createSignatureFunctionForTransform();
+}
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6IkFBOEVJOztBQTlFSixTQUFTQSxlQUFlQyxVQUFVQyxXQUFXQyxrQkFBa0I7QUFDL0QsT0FBT0MsU0FBUztBQWlCaEIsTUFBTUMsY0FBY0wsY0FBNEIsQ0FBQyxDQUFpQjtBQUUzRCxhQUFNTSxlQUFlQSxDQUFDLEVBQUVDLFNBQXdDLE1BQU07QUFBQUMsS0FBQTtBQUMzRSxRQUFNLENBQUNDLE1BQU1DLE9BQU8sSUFBSVQsU0FBdUIsSUFBSTtBQUNuRCxRQUFNLENBQUNVLFNBQVNDLFVBQVUsSUFBSVgsU0FBUyxJQUFJO0FBQzNDLFFBQU0sQ0FBQ1ksT0FBT0MsUUFBUSxJQUFJYixTQUF3QixJQUFJO0FBRXREQyxZQUFVLE1BQU07QUFDZCxtQkFBZWEsYUFBYTtBQUMxQixVQUFJO0FBQ0YsY0FBTUMsV0FBVyxNQUFNWixJQUFJYSxJQUFJLFVBQVU7QUFDekNQLGdCQUFRTSxTQUFTRSxJQUFJO0FBQUEsTUFDdkIsU0FBU0wsUUFBTztBQUNkSCxnQkFBUSxJQUFJO0FBQUEsTUFDZCxVQUFDO0FBQ0NFLG1CQUFXLEtBQUs7QUFBQSxNQUNsQjtBQUFBLElBQ0Y7QUFDQUcsZUFBVztBQUFBLEVBQ2IsR0FBRyxFQUFFO0FBRUwsUUFBTUksUUFBUSxPQUFPQyxVQUFrQkMsYUFBcUI7QUFDMUQsUUFBSTtBQUNGUCxlQUFTLElBQUk7QUFDYixZQUFNVixJQUFJa0IsS0FBSyxlQUFlO0FBQUEsUUFDNUJGO0FBQUFBLFFBQ0FDO0FBQUFBLE1BQ0YsQ0FBQztBQUNELFlBQU1MLFdBQVcsTUFBTVosSUFBSWEsSUFBSSxVQUFVO0FBQ3pDUCxjQUFRTSxTQUFTRSxJQUFJO0FBQUEsSUFDdkIsU0FBU0ssS0FBVTtBQUNqQixZQUFNQyxXQUFXRCxJQUFJUCxVQUFVRSxNQUFNTyxXQUFXRixJQUFJUCxVQUFVRSxNQUFNTDtBQUNwRUMsZUFBU1UsUUFBUTtBQUNqQixZQUFNRDtBQUFBQSxJQUNSO0FBQUEsRUFDRjtBQUVBLFFBQU1HLFdBQVcsT0FBT04sVUFBa0JDLGFBQXFCO0FBQzdELFFBQUk7QUFDRlAsZUFBUyxJQUFJO0FBQ2IsWUFBTVYsSUFBSWtCLEtBQUssa0JBQWtCO0FBQUEsUUFDL0JGO0FBQUFBLFFBQ0FDO0FBQUFBLE1BQ0YsQ0FBQztBQUFBLElBQ0gsU0FBU0UsS0FBVTtBQUNqQixZQUFNQyxXQUNKRCxJQUFJUCxVQUFVRSxNQUFNTyxXQUNwQkYsSUFBSVAsVUFBVUUsTUFBTUwsU0FDcEI7QUFDRkMsZUFBU1UsUUFBUTtBQUNqQixZQUFNRDtBQUFBQSxJQUNSO0FBQUEsRUFDRjtBQUVBLFFBQU1JLFNBQVMsWUFBWTtBQUN6QixVQUFNdkIsSUFBSWtCLEtBQUssY0FBYztBQUM3QlosWUFBUSxJQUFJO0FBQUEsRUFDZDtBQUVBLFNBQ0U7QUFBQSxJQUFDLFlBQVk7QUFBQSxJQUFaO0FBQUEsTUFDQyxPQUFPO0FBQUEsUUFDTEQ7QUFBQUEsUUFDQUU7QUFBQUEsUUFDQWlCLGVBQWUsQ0FBQyxDQUFDbkI7QUFBQUEsUUFDakJVO0FBQUFBLFFBQ0FPO0FBQUFBLFFBQ0FDO0FBQUFBLFFBQ0FkO0FBQUFBLE1BQ0Y7QUFBQSxNQUVDTjtBQUFBQTtBQUFBQSxJQVhIO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQSxFQVlBO0FBRUo7QUFBRUMsR0F4RVdGLGNBQVk7QUFBQXVCLEtBQVp2QjtBQTBFTixhQUFNd0IsVUFBVUEsTUFBQTtBQUFBQyxNQUFBO0FBQUEsU0FBTTVCLFdBQVdFLFdBQVc7QUFBQztBQUFDMEIsSUFBeENELFNBQU87QUFBQSxJQUFBRDtBQUFBRyxhQUFBSCxJQUFBIiwibmFtZXMiOlsiY3JlYXRlQ29udGV4dCIsInVzZVN0YXRlIiwidXNlRWZmZWN0IiwidXNlQ29udGV4dCIsImFwaSIsIkF1dGhDb250ZXh0IiwiQXV0aFByb3ZpZGVyIiwiY2hpbGRyZW4iLCJfcyIsInVzZXIiLCJzZXRVc2VyIiwibG9hZGluZyIsInNldExvYWRpbmciLCJlcnJvciIsInNldEVycm9yIiwiY2hlY2tMb2dpbiIsInJlc3BvbnNlIiwiZ2V0IiwiZGF0YSIsImxvZ2luIiwidXNlcm5hbWUiLCJwYXNzd29yZCIsInBvc3QiLCJlcnIiLCJlcnJvck1zZyIsIm1lc3NhZ2UiLCJyZWdpc3RlciIsImxvZ291dCIsImF1dGhlbnRpY2F0ZWQiLCJfYyIsInVzZUF1dGgiLCJfczIiLCIkUmVmcmVzaFJlZyQiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZXMiOlsiYXV0aC1jb250ZXh0LnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBjcmVhdGVDb250ZXh0LCB1c2VTdGF0ZSwgdXNlRWZmZWN0LCB1c2VDb250ZXh0IH0gZnJvbSAncmVhY3QnO1xuaW1wb3J0IGFwaSBmcm9tICcuLi9zZXJ2aWNlcy9hcGknO1xuXG5pbnRlcmZhY2UgSVVzZXIge1xuICBpZDogc3RyaW5nO1xuICB1c2VybmFtZTogc3RyaW5nO1xufVxuXG5pbnRlcmZhY2UgSUF1dGhDb250ZXh0IHtcbiAgdXNlcjogSVVzZXIgfCBudWxsO1xuICBsb2FkaW5nOiBib29sZWFuO1xuICBhdXRoZW50aWNhdGVkOiBib29sZWFuO1xuICBsb2dpbjogKHVzZXJuYW1lOiBzdHJpbmcsIHBhc3N3b3JkOiBzdHJpbmcpID0+IFByb21pc2U8dm9pZD47XG4gIHJlZ2lzdGVyOiAodXNlcm5hbWU6IHN0cmluZywgcGFzc3dvcmQ6IHN0cmluZykgPT4gUHJvbWlzZTx2b2lkPjtcbiAgbG9nb3V0OiAoKSA9PiBQcm9taXNlPHZvaWQ+O1xuICBlcnJvcjogc3RyaW5nIHwgbnVsbDtcbn1cblxuY29uc3QgQXV0aENvbnRleHQgPSBjcmVhdGVDb250ZXh0PElBdXRoQ29udGV4dD4oe30gYXMgSUF1dGhDb250ZXh0KTtcblxuZXhwb3J0IGNvbnN0IEF1dGhQcm92aWRlciA9ICh7IGNoaWxkcmVuIH06IHsgY2hpbGRyZW46IFJlYWN0LlJlYWN0Tm9kZSB9KSA9PiB7XG4gIGNvbnN0IFt1c2VyLCBzZXRVc2VyXSA9IHVzZVN0YXRlPElVc2VyIHwgbnVsbD4obnVsbCk7XG4gIGNvbnN0IFtsb2FkaW5nLCBzZXRMb2FkaW5nXSA9IHVzZVN0YXRlKHRydWUpO1xuICBjb25zdCBbZXJyb3IsIHNldEVycm9yXSA9IHVzZVN0YXRlPHN0cmluZyB8IG51bGw+KG51bGwpO1xuXG4gIHVzZUVmZmVjdCgoKSA9PiB7XG4gICAgYXN5bmMgZnVuY3Rpb24gY2hlY2tMb2dpbigpIHtcbiAgICAgIHRyeSB7XG4gICAgICAgIGNvbnN0IHJlc3BvbnNlID0gYXdhaXQgYXBpLmdldCgnL2F1dGgvbWUnKTtcbiAgICAgICAgc2V0VXNlcihyZXNwb25zZS5kYXRhKTtcbiAgICAgIH0gY2F0Y2ggKGVycm9yKSB7XG4gICAgICAgIHNldFVzZXIobnVsbCk7XG4gICAgICB9IGZpbmFsbHkge1xuICAgICAgICBzZXRMb2FkaW5nKGZhbHNlKTtcbiAgICAgIH1cbiAgICB9XG4gICAgY2hlY2tMb2dpbigpO1xuICB9LCBbXSk7XG5cbiAgY29uc3QgbG9naW4gPSBhc3luYyAodXNlcm5hbWU6IHN0cmluZywgcGFzc3dvcmQ6IHN0cmluZykgPT4ge1xuICAgIHRyeSB7XG4gICAgICBzZXRFcnJvcihudWxsKTtcbiAgICAgIGF3YWl0IGFwaS5wb3N0KCcvYXV0aC9sb2dpbicsIHtcbiAgICAgICAgdXNlcm5hbWUsXG4gICAgICAgIHBhc3N3b3JkLFxuICAgICAgfSk7XG4gICAgICBjb25zdCByZXNwb25zZSA9IGF3YWl0IGFwaS5nZXQoJy9hdXRoL21lJyk7XG4gICAgICBzZXRVc2VyKHJlc3BvbnNlLmRhdGEpO1xuICAgIH0gY2F0Y2ggKGVycjogYW55KSB7XG4gICAgICBjb25zdCBlcnJvck1zZyA9IGVyci5yZXNwb25zZT8uZGF0YT8ubWVzc2FnZSB8fCBlcnIucmVzcG9uc2U/LmRhdGE/LmVycm9yO1xuICAgICAgc2V0RXJyb3IoZXJyb3JNc2cpO1xuICAgICAgdGhyb3cgZXJyO1xuICAgIH1cbiAgfTtcblxuICBjb25zdCByZWdpc3RlciA9IGFzeW5jICh1c2VybmFtZTogc3RyaW5nLCBwYXNzd29yZDogc3RyaW5nKSA9PiB7XG4gICAgdHJ5IHtcbiAgICAgIHNldEVycm9yKG51bGwpO1xuICAgICAgYXdhaXQgYXBpLnBvc3QoJy9hdXRoL3JlZ2lzdGVyJywge1xuICAgICAgICB1c2VybmFtZSxcbiAgICAgICAgcGFzc3dvcmQsXG4gICAgICB9KTtcbiAgICB9IGNhdGNoIChlcnI6IGFueSkge1xuICAgICAgY29uc3QgZXJyb3JNc2cgPVxuICAgICAgICBlcnIucmVzcG9uc2U/LmRhdGE/Lm1lc3NhZ2UgfHxcbiAgICAgICAgZXJyLnJlc3BvbnNlPy5kYXRhPy5lcnJvciB8fFxuICAgICAgICAnRXJybyBhbyByZWdpc3RyYXInO1xuICAgICAgc2V0RXJyb3IoZXJyb3JNc2cpO1xuICAgICAgdGhyb3cgZXJyO1xuICAgIH1cbiAgfTtcblxuICBjb25zdCBsb2dvdXQgPSBhc3luYyAoKSA9PiB7XG4gICAgYXdhaXQgYXBpLnBvc3QoJy9hdXRoL2xvZ291dCcpO1xuICAgIHNldFVzZXIobnVsbCk7XG4gIH07XG5cbiAgcmV0dXJuIChcbiAgICA8QXV0aENvbnRleHQuUHJvdmlkZXJcbiAgICAgIHZhbHVlPXt7XG4gICAgICAgIHVzZXIsXG4gICAgICAgIGxvYWRpbmcsXG4gICAgICAgIGF1dGhlbnRpY2F0ZWQ6ICEhdXNlcixcbiAgICAgICAgbG9naW4sXG4gICAgICAgIHJlZ2lzdGVyLFxuICAgICAgICBsb2dvdXQsXG4gICAgICAgIGVycm9yLFxuICAgICAgfX1cbiAgICA+XG4gICAgICB7Y2hpbGRyZW59XG4gICAgPC9BdXRoQ29udGV4dC5Qcm92aWRlcj5cbiAgKTtcbn07XG5cbmV4cG9ydCBjb25zdCB1c2VBdXRoID0gKCkgPT4gdXNlQ29udGV4dChBdXRoQ29udGV4dCk7XG4iXSwiZmlsZSI6Ii9ob21lL2hlcmljL0RvY3VtZW50b3Mvd2VhdGhlci1yZXBvcnQvd2VhdGhlci1yZXBvcnQvc3JjL2NvbnRleHRzL2F1dGgtY29udGV4dC50c3gifQ==4Ç¬¯ý      i]Êdi]ÊdI+       j    O^partitionKey=%28http%2Clocalhost%29,:http://localhost:5173/src/contexts/auth-context.tsx?t=1767753986185 strongly-framed 1 request-method GET response-head HTTP/1.1 200 OK
+Content-Type: text/javascript
+Cache-Control: no-cache
+Etag: W/"f67-1/io4kr732mZAiZEbyt3yg1k1Zo"
+Content-Length: 9926
+Date: Wed, 07 Jan 2026 02:52:20 GMT
+Vary: Origin
+ original-response-headers Vary: Origin
+Content-Type: text/javascript
+Cache-Control: no-cache
+Etag: W/"f67-1/io4kr732mZAiZEbyt3yg1k1Zo"
+Date: Wed, 07 Jan 2026 02:46:26 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Content-Length: 9926
+ ctid 2 net-response-time-onstart 9 net-response-time-onstop 10   &Æ

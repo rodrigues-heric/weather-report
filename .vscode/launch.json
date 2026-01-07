@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch firefox",
+      "type": "firefox",
+      "request": "launch",
+      "webRoot": "${workspaceFolder}/weather-report/",
+      "url": "http://localhost:5173",
+      "reloadOnAttach": true,
+      "tmpDir": "${workspaceFolder}/.vscode/"
+    }
+  ]
+}

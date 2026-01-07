@@ -1,0 +1,113 @@
+import { createHotContext as __vite__createHotContext } from "/@vite/client";import.meta.hot = __vite__createHotContext("/src/components/ui/popover.tsx");import __vite__cjsImport0_react_jsxDevRuntime from "/node_modules/.vite/deps/react_jsx-dev-runtime.js?v=e7284969"; const jsxDEV = __vite__cjsImport0_react_jsxDevRuntime["jsxDEV"];
+import __vite__cjsImport1_react from "/node_modules/.vite/deps/react.js?v=e7284969"; const React = ((m) => m?.__esModule ? m : {	...typeof m === "object" && !Array.isArray(m) || typeof m === "function" ? m : {},	default: m})(__vite__cjsImport1_react);
+import * as PopoverPrimitive from "/node_modules/.vite/deps/@radix-ui_react-popover.js?v=e7284969";
+import { cn } from "/src/lib/utils.ts";
+function Popover({
+  ...props
+}) {
+  return /* @__PURE__ */ jsxDEV(PopoverPrimitive.Root, { "data-slot": "popover", ...props }, void 0, false, {
+    fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/ui/popover.tsx",
+    lineNumber: 9,
+    columnNumber: 10
+  }, this);
+}
+_c = Popover;
+function PopoverTrigger({
+  ...props
+}) {
+  return /* @__PURE__ */ jsxDEV(PopoverPrimitive.Trigger, { "data-slot": "popover-trigger", ...props }, void 0, false, {
+    fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/ui/popover.tsx",
+    lineNumber: 15,
+    columnNumber: 10
+  }, this);
+}
+_c2 = PopoverTrigger;
+function PopoverContent({
+  className,
+  align = "center",
+  sideOffset = 4,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxDEV(PopoverPrimitive.Portal, { children: /* @__PURE__ */ jsxDEV(
+    PopoverPrimitive.Content,
+    {
+      "data-slot": "popover-content",
+      align,
+      sideOffset,
+      className: cn(
+        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-72 origin-(--radix-popover-content-transform-origin) rounded-md border p-4 shadow-md outline-hidden",
+        className
+      ),
+      ...props
+    },
+    void 0,
+    false,
+    {
+      fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/ui/popover.tsx",
+      lineNumber: 26,
+      columnNumber: 7
+    },
+    this
+  ) }, void 0, false, {
+    fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/ui/popover.tsx",
+    lineNumber: 25,
+    columnNumber: 5
+  }, this);
+}
+_c3 = PopoverContent;
+function PopoverAnchor({
+  ...props
+}) {
+  return /* @__PURE__ */ jsxDEV(PopoverPrimitive.Anchor, { "data-slot": "popover-anchor", ...props }, void 0, false, {
+    fileName: "/home/heric/Documentos/weather-report/weather-report/src/components/ui/popover.tsx",
+    lineNumber: 43,
+    columnNumber: 10
+  }, this);
+}
+_c4 = PopoverAnchor;
+export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor };
+var _c, _c2, _c3, _c4;
+$RefreshReg$(_c, "Popover");
+$RefreshReg$(_c2, "PopoverTrigger");
+$RefreshReg$(_c3, "PopoverContent");
+$RefreshReg$(_c4, "PopoverAnchor");
+import * as RefreshRuntime from "/@react-refresh";
+const inWebWorker = typeof WorkerGlobalScope !== "undefined" && self instanceof WorkerGlobalScope;
+if (import.meta.hot && !inWebWorker) {
+  if (!window.$RefreshReg$) {
+    throw new Error(
+      "@vitejs/plugin-react can't detect preamble. Something is wrong."
+    );
+  }
+  RefreshRuntime.__hmr_import(import.meta.url).then((currentExports) => {
+    RefreshRuntime.registerExportsForReactRefresh("/home/heric/Documentos/weather-report/weather-report/src/components/ui/popover.tsx", currentExports);
+    import.meta.hot.accept((nextExports) => {
+      if (!nextExports) return;
+      const invalidateMessage = RefreshRuntime.validateRefreshBoundaryAndEnqueueUpdate("/home/heric/Documentos/weather-report/weather-report/src/components/ui/popover.tsx", currentExports, nextExports);
+      if (invalidateMessage) import.meta.hot.invalidate(invalidateMessage);
+    });
+  });
+}
+function $RefreshReg$(type, id) {
+  return RefreshRuntime.register(type, "/home/heric/Documentos/weather-report/weather-report/src/components/ui/popover.tsx " + id);
+}
+function $RefreshSig$() {
+  return RefreshRuntime.createSignatureFunctionForTransform();
+}
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJtYXBwaW5ncyI6IkFBUVM7QUFSVCxZQUFZQSxXQUFXO0FBQ3ZCLFlBQVlDLHNCQUFzQjtBQUVsQyxTQUFTQyxVQUFVO0FBRW5CLFNBQVNDLFFBQVE7QUFBQSxFQUNmLEdBQUdDO0FBQytDLEdBQUc7QUFDckQsU0FBTyx1QkFBQyxpQkFBaUIsTUFBakIsRUFBc0IsYUFBVSxXQUFVLEdBQUlBLFNBQS9DO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0FBcUQ7QUFDOUQ7QUFBQ0MsS0FKUUY7QUFNVCxTQUFTRyxlQUFlO0FBQUEsRUFDdEIsR0FBR0Y7QUFDa0QsR0FBRztBQUN4RCxTQUFPLHVCQUFDLGlCQUFpQixTQUFqQixFQUF5QixhQUFVLG1CQUFrQixHQUFJQSxTQUExRDtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBQWdFO0FBQ3pFO0FBQUNHLE1BSlFEO0FBTVQsU0FBU0UsZUFBZTtBQUFBLEVBQ3RCQztBQUFBQSxFQUNBQyxRQUFRO0FBQUEsRUFDUkMsYUFBYTtBQUFBLEVBQ2IsR0FBR1A7QUFDa0QsR0FBRztBQUN4RCxTQUNFLHVCQUFDLGlCQUFpQixRQUFqQixFQUNDO0FBQUEsSUFBQyxpQkFBaUI7QUFBQSxJQUFqQjtBQUFBLE1BQ0MsYUFBVTtBQUFBLE1BQ1Y7QUFBQSxNQUNBO0FBQUEsTUFDQSxXQUFXRjtBQUFBQSxRQUNUO0FBQUEsUUFDQU87QUFBQUEsTUFDRjtBQUFBLE1BQ0EsR0FBSUw7QUFBQUE7QUFBQUEsSUFSTjtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUE7QUFBQTtBQUFBO0FBQUEsRUFRWSxLQVRkO0FBQUE7QUFBQTtBQUFBO0FBQUEsU0FXQTtBQUVKO0FBQUNRLE1BcEJRSjtBQXNCVCxTQUFTSyxjQUFjO0FBQUEsRUFDckIsR0FBR1Q7QUFDaUQsR0FBRztBQUN2RCxTQUFPLHVCQUFDLGlCQUFpQixRQUFqQixFQUF3QixhQUFVLGtCQUFpQixHQUFJQSxTQUF4RDtBQUFBO0FBQUE7QUFBQTtBQUFBLFNBQThEO0FBQ3ZFO0FBQUNVLE1BSlFEO0FBTVQsU0FBU1YsU0FBU0csZ0JBQWdCRSxnQkFBZ0JLO0FBQWUsSUFBQVIsSUFBQUUsS0FBQUssS0FBQUU7QUFBQUMsYUFBQVYsSUFBQTtBQUFBVSxhQUFBUixLQUFBO0FBQUFRLGFBQUFILEtBQUE7QUFBQUcsYUFBQUQsS0FBQSIsIm5hbWVzIjpbIlJlYWN0IiwiUG9wb3ZlclByaW1pdGl2ZSIsImNuIiwiUG9wb3ZlciIsInByb3BzIiwiX2MiLCJQb3BvdmVyVHJpZ2dlciIsIl9jMiIsIlBvcG92ZXJDb250ZW50IiwiY2xhc3NOYW1lIiwiYWxpZ24iLCJzaWRlT2Zmc2V0IiwiX2MzIiwiUG9wb3ZlckFuY2hvciIsIl9jNCIsIiRSZWZyZXNoUmVnJCJdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlcyI6WyJwb3BvdmVyLnRzeCJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgKiBhcyBSZWFjdCBmcm9tIFwicmVhY3RcIlxuaW1wb3J0ICogYXMgUG9wb3ZlclByaW1pdGl2ZSBmcm9tIFwiQHJhZGl4LXVpL3JlYWN0LXBvcG92ZXJcIlxuXG5pbXBvcnQgeyBjbiB9IGZyb20gXCJAL2xpYi91dGlsc1wiXG5cbmZ1bmN0aW9uIFBvcG92ZXIoe1xuICAuLi5wcm9wc1xufTogUmVhY3QuQ29tcG9uZW50UHJvcHM8dHlwZW9mIFBvcG92ZXJQcmltaXRpdmUuUm9vdD4pIHtcbiAgcmV0dXJuIDxQb3BvdmVyUHJpbWl0aXZlLlJvb3QgZGF0YS1zbG90PVwicG9wb3ZlclwiIHsuLi5wcm9wc30gLz5cbn1cblxuZnVuY3Rpb24gUG9wb3ZlclRyaWdnZXIoe1xuICAuLi5wcm9wc1xufTogUmVhY3QuQ29tcG9uZW50UHJvcHM8dHlwZW9mIFBvcG92ZXJQcmltaXRpdmUuVHJpZ2dlcj4pIHtcbiAgcmV0dXJuIDxQb3BvdmVyUHJpbWl0aXZlLlRyaWdnZXIgZGF0YS1zbG90PVwicG9wb3Zlci10cmlnZ2VyXCIgey4uLnByb3BzfSAvPlxufVxuXG5mdW5jdGlvbiBQb3BvdmVyQ29udGVudCh7XG4gIGNsYXNzTmFtZSxcbiAgYWxpZ24gPSBcImNlbnRlclwiLFxuICBzaWRlT2Zmc2V0ID0gNCxcbiAgLi4ucHJvcHNcbn06IFJlYWN0LkNvbXBvbmVudFByb3BzPHR5cGVvZiBQb3BvdmVyUHJpbWl0aXZlLkNvbnRlbnQ+KSB7XG4gIHJldHVybiAoXG4gICAgPFBvcG92ZXJQcmltaXRpdmUuUG9ydGFsPlxuICAgICAgPFBvcG92ZXJQcmltaXRpdmUuQ29udGVudFxuICAgICAgICBkYXRhLXNsb3Q9XCJwb3BvdmVyLWNvbnRlbnRcIlxuICAgICAgICBhbGlnbj17YWxpZ259XG4gICAgICAgIHNpZGVPZmZzZXQ9e3NpZGVPZmZzZXR9XG4gICAgICAgIGNsYXNzTmFtZT17Y24oXG4gICAgICAgICAgXCJiZy1wb3BvdmVyIHRleHQtcG9wb3Zlci1mb3JlZ3JvdW5kIGRhdGEtW3N0YXRlPW9wZW5dOmFuaW1hdGUtaW4gZGF0YS1bc3RhdGU9Y2xvc2VkXTphbmltYXRlLW91dCBkYXRhLVtzdGF0ZT1jbG9zZWRdOmZhZGUtb3V0LTAgZGF0YS1bc3RhdGU9b3Blbl06ZmFkZS1pbi0wIGRhdGEtW3N0YXRlPWNsb3NlZF06em9vbS1vdXQtOTUgZGF0YS1bc3RhdGU9b3Blbl06em9vbS1pbi05NSBkYXRhLVtzaWRlPWJvdHRvbV06c2xpZGUtaW4tZnJvbS10b3AtMiBkYXRhLVtzaWRlPWxlZnRdOnNsaWRlLWluLWZyb20tcmlnaHQtMiBkYXRhLVtzaWRlPXJpZ2h0XTpzbGlkZS1pbi1mcm9tLWxlZnQtMiBkYXRhLVtzaWRlPXRvcF06c2xpZGUtaW4tZnJvbS1ib3R0b20tMiB6LTUwIHctNzIgb3JpZ2luLSgtLXJhZGl4LXBvcG92ZXItY29udGVudC10cmFuc2Zvcm0tb3JpZ2luKSByb3VuZGVkLW1kIGJvcmRlciBwLTQgc2hhZG93LW1kIG91dGxpbmUtaGlkZGVuXCIsXG4gICAgICAgICAgY2xhc3NOYW1lXG4gICAgICAgICl9XG4gICAgICAgIHsuLi5wcm9wc31cbiAgICAgIC8+XG4gICAgPC9Qb3BvdmVyUHJpbWl0aXZlLlBvcnRhbD5cbiAgKVxufVxuXG5mdW5jdGlvbiBQb3BvdmVyQW5jaG9yKHtcbiAgLi4ucHJvcHNcbn06IFJlYWN0LkNvbXBvbmVudFByb3BzPHR5cGVvZiBQb3BvdmVyUHJpbWl0aXZlLkFuY2hvcj4pIHtcbiAgcmV0dXJuIDxQb3BvdmVyUHJpbWl0aXZlLkFuY2hvciBkYXRhLXNsb3Q9XCJwb3BvdmVyLWFuY2hvclwiIHsuLi5wcm9wc30gLz5cbn1cblxuZXhwb3J0IHsgUG9wb3ZlciwgUG9wb3ZlclRyaWdnZXIsIFBvcG92ZXJDb250ZW50LCBQb3BvdmVyQW5jaG9yIH1cbiJdLCJmaWxlIjoiL2hvbWUvaGVyaWMvRG9jdW1lbnRvcy93ZWF0aGVyLXJlcG9ydC93ZWF0aGVyLXJlcG9ydC9zcmMvY29tcG9uZW50cy91aS9wb3BvdmVyLnRzeCJ9‘]ð4Œ      i]Êdi]ÊdIõÕ       Z    O^partitionKey=%28http%2Clocalhost%29,:http://localhost:5173/src/components/ui/popover.tsx strongly-framed 1 request-method GET response-head HTTP/1.1 200 OK
+Content-Type: text/javascript
+Cache-Control: no-cache
+Etag: W/"1110-PEySGVCJBJTjYjw46sZmAS5iFE8"
+Content-Length: 8471
+Date: Wed, 07 Jan 2026 02:52:20 GMT
+Vary: Origin
+ original-response-headers Vary: Origin
+Content-Type: text/javascript
+Cache-Control: no-cache
+Etag: W/"1110-PEySGVCJBJTjYjw46sZmAS5iFE8"
+Date: Wed, 07 Jan 2026 02:21:13 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Content-Length: 8471
+ ctid 2 net-response-time-onstart 18 net-response-time-onstop 18   !
