@@ -38,7 +38,11 @@ export function WeatherHeader() {
   useSendCityData(selectedCity, currentLanguage);
 
   return (
-    <header className='flex items-center justify-between pb-2'>
+    <div className='flex flex-col items-start justify-between pb-2 md:flex-row md:items-center'>
+      <div className='relative mb-4 w-full md:hidden'>
+        <CitySearch onCitySelect={handleCitySelection} />
+      </div>
+
       <div className='text-muted-foreground flex items-center gap-2'>
         {displayCity(selectedCity)}
       </div>
@@ -48,6 +52,6 @@ export function WeatherHeader() {
           <CitySearch onCitySelect={handleCitySelection} />
         </div>
       </div>
-    </header>
+    </div>
   );
 }
