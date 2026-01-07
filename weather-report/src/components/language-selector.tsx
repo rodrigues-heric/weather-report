@@ -62,7 +62,7 @@ export function LanguageSelector() {
             {selectedStatus?.label || currentStatus?.label || currentLanguage}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className='p-0' side='right' align='start'>
+        <PopoverContent className='p-0' side='bottom' align='start'>
           <Command>
             <CommandInput placeholder={t('language.selectLanguage')} />
             <CommandList>
