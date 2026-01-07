@@ -1,4 +1,7 @@
 {
+  "actions": {
+    "close": "Fechar"
+  },
   "header": {
     "hello": "Olá",
     "logout": "Sair"
@@ -61,6 +64,7 @@
     "december": "Dezembro"
   },
   "mode": {
+    "theme": "Tema",
     "light": "Claro",
     "dark": "Escuro",
     "system": "Sistema"

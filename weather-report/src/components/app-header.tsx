@@ -4,6 +4,7 @@ import { LanguageSelector } from './language-selector';
 import { ModeToggle } from './mode-toggle';
 import { Button } from './ui/button';
 import { LogOut } from 'lucide-react';
+import { MobileSidebar } from './mobile-sidebar';
 
 export function AppHeader() {
   const { user, logout } = useAuth();
@@ -11,14 +12,14 @@ export function AppHeader() {
 
   return (
     <header className='mb-4 flex items-center justify-between'>
-      <div className='flex items-center gap-2'>
+      <div className='hidden items-center gap-2 md:flex'>
         <LanguageSelector />
         <ModeToggle />
       </div>
 
       {user && (
-        <div className='flex items-center gap-4'>
-          <span className='text-muted-foreground hidden text-sm md:block'>
+        <div className='hidden items-center gap-4 md:flex'>
+          <span className='text-muted-foreground text-sm'>
             {t('header.hello')}, <strong>{user.username}</strong>
           </span>
 
@@ -33,6 +34,8 @@ export function AppHeader() {
           </Button>
         </div>
       )}
+
+      <MobileSidebar />
     </header>
   );
 }

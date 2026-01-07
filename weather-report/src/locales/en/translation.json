@@ -1,4 +1,7 @@
 {
+  "actions": {
+    "close": "Close"
+  },
   "header": {
     "hello": "Hello",
     "logout": "Logout"
@@ -61,6 +64,7 @@
     "december": "December"
   },
   "mode": {
+    "theme": "Theme",
     "light": "Light",
     "dark": "Dark",
     "system": "System"
