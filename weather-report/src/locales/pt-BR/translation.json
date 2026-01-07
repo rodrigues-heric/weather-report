@@ -61,6 +61,7 @@
     "december": "Dezembro"
   },
   "mode": {
+    "theme": "Tema",
     "light": "Claro",
     "dark": "Escuro",
     "system": "Sistema"
