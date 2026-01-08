@@ -11,24 +11,24 @@ export function getHomeMainCard(
   isLoading: boolean,
   weatherData: WeatherData | null
 ): JSX.Element {
-  if (!isLoading && weatherData) {
+  if (!isLoading && weatherData)
     return <WeatherMainCard weatherData={weatherData} />;
-  } else {
+  if (isLoading)
     return <Skeleton className='space-y-6 lg:col-span-3'></Skeleton>;
-  }
+  return <></>;
 }
 
 export function getHomeHourlyCard(
   isLoading: boolean,
   weatherData: WeatherData | null
 ): JSX.Element {
-  if (!isLoading && weatherData) {
+  if (!isLoading && weatherData)
     return <WeatherHourly weatherData={weatherData} />;
-  } else {
+  if (isLoading)
     return (
       <Skeleton className='grid h-72 w-full grid-cols-1 gap-6 md:grid-cols-3'></Skeleton>
     );
-  }
+  return <></>;
 }
 
 export function getHomeWeekGraph(
@@ -41,7 +41,7 @@ export function getHomeWeekGraph(
     theme: 'dark' | 'light';
   }
 ): JSX.Element {
-  if (!isLoading && weatherData) {
+  if (!isLoading && weatherData)
     return (
       <WeatherWeekGraph
         weatherData={weatherData}
@@ -51,29 +51,27 @@ export function getHomeWeekGraph(
         theme={chartInfo.theme}
       />
     );
-  } else {
+  if (isLoading)
     return <Skeleton className='flex flex-col xl:col-span-2'></Skeleton>;
-  }
+  return <></>;
 }
 
 export function getHomeWeekTemperatures(
   isLoading: boolean,
   weatherData: WeatherData | null
 ): JSX.Element {
-  if (!isLoading && weatherData) {
+  if (!isLoading && weatherData)
     return <WeatherWeekTemperatures weatherData={weatherData} />;
-  } else {
-    return <Skeleton className='h-72'></Skeleton>;
-  }
+  if (isLoading) return <Skeleton className='h-72'></Skeleton>;
+  return <></>;
 }
 
 export function getHomeDetailsCard(
   isLoading: boolean,
   weatherData: WeatherData | null
 ): JSX.Element {
-  if (!isLoading && weatherData) {
+  if (!isLoading && weatherData)
     return <WeatherDetails weatherData={weatherData} />;
-  } else {
-    return <Skeleton className='h-48'></Skeleton>;
-  }
+  if (isLoading) return <Skeleton className='h-48'></Skeleton>;
+  return <></>;
 }

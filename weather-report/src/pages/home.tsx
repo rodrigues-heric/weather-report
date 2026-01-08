@@ -34,7 +34,7 @@ export function Home() {
     theme: effectiveTheme,
   };
 
-  const { weatherData, isLoading, error } = useWeatherData();
+  const { weatherData, isLoading } = useWeatherData();
 
   return (
     <div className='mx-auto w-full space-y-2'>

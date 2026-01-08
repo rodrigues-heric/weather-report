@@ -1,9 +1,11 @@
 import { createContext, useState, useEffect, useContext } from 'react';
 import api from '../services/api';
+import { useWeatherData } from './weather-data-context';
 
 interface IUser {
   id: string;
   username: string;
+  favoriteCity?: Record<string, any> | null;
 }
 
 interface IAuthContext {
@@ -14,6 +16,7 @@ interface IAuthContext {
   register: (username: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
   error: string | null;
+  updateFavoriteCity: (city: Record<string, any> | null) => void;
 }
 
 const AuthContext = createContext<IAuthContext>({} as IAuthContext);
@@ -22,6 +25,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<IUser | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { setWeatherData } = useWeatherData();
 
   useEffect(() => {
     async function checkLogin() {
@@ -46,6 +50,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       });
       const response = await api.get('/auth/me');
       setUser(response.data);
+      // If the user doesn't have a favorite city, ensure weather data is cleared
+      if (!response.data?.favoriteCity) {
+        setWeatherData(null);
+      }
     } catch (err: any) {
       const errorMsg = err.response?.data?.message || err.response?.data?.error;
       setError(errorMsg);
@@ -73,6 +81,14 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const logout = async () => {
     await api.post('/auth/logout');
     setUser(null);
+    // Clear any weather data on logout to avoid showing previous search
+    setWeatherData(null);
+  };
+
+  const updateFavoriteCity = (city: Record<string, any> | null) => {
+    if (user) {
+      setUser({ ...user, favoriteCity: city });
+    }
   };
 
   return (
@@ -85,6 +101,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         register,
         logout,
         error,
+        updateFavoriteCity,
       }}
     >
       {children}
