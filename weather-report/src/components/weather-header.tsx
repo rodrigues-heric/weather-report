@@ -76,7 +76,7 @@ function DisplayCity({ city }: { city: City | null }) {
 export function WeatherHeader() {
   const [selectedCity, setSelectedCity] = useState<City | null>(null);
   const { i18n } = useTranslation();
-  const { user } = useAuth();
+  const { user, authenticated } = useAuth();
   const currentLanguage = i18n.language == 'pt-BR' ? 'pt' : 'en';
 
   const handleCitySelection = (city: City) => {
@@ -91,10 +91,10 @@ export function WeatherHeader() {
   }, [user?.favoriteCity, selectedCity]);
 
   useEffect(() => {
-    if (user && !user.favoriteCity) {
+    if (!authenticated) {
       setSelectedCity(null);
     }
-  }, [user?.favoriteCity]);
+  }, [authenticated]);
 
   useSendCityData(selectedCity, currentLanguage);
 
