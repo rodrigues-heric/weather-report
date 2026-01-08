@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   Post,
+  Patch,
   Req,
   Res,
   UseGuards,
@@ -10,6 +11,7 @@ import {
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './auth.guard';
 import { CreateUserDto } from './dto/create-user.dto';
+import { FavoriteCityDto } from './dto/favorite-city.dto';
 
 const ONE_HOUR_MS = 60 * 60 * 1000;
 
@@ -24,8 +26,8 @@ export class AuthController {
 
   @UseGuards(JwtAuthGuard)
   @Get('/me')
-  public getMe(@Req() req: any) {
-    return req.user;
+  public async getMe(@Req() req: any) {
+    return this.authService.getUserWithFavoriteCity(req.user.sub);
   }
 
   @Post('/login')
@@ -46,7 +48,10 @@ export class AuthController {
       maxAge: ONE_HOUR_MS,
     });
 
-    return { message: 'Login successful', access_token: loginData.access_token };
+    return {
+      message: 'Login successful',
+      access_token: loginData.access_token,
+    };
   }
 
   @UseGuards(JwtAuthGuard)
@@ -54,5 +59,14 @@ export class AuthController {
   public async logout(@Res({ passthrough: true }) response: any) {
     response.clearCookie('jwt');
     return { message: 'Logout successful' };
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Patch('/favorite-city')
+  public async saveFavoriteCity(
+    @Req() req: any,
+    @Body() favoriteCityDto: FavoriteCityDto,
+  ) {
+    return this.authService.saveFavoriteCity(req.user.sub, favoriteCityDto);
   }
 }

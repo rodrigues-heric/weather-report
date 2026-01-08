@@ -13,4 +13,7 @@ export class User {
 
   @Column({ default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
+
+  @Column('jsonb', { nullable: true })
+  favoriteCity: Record<string, any> | null;
 }

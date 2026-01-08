@@ -2,6 +2,7 @@ import {
   Injectable,
   BadRequestException,
   UnauthorizedException,
+  NotFoundException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -9,6 +10,7 @@ import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import { User } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
+import { FavoriteCityDto } from './dto/favorite-city.dto';
 
 @Injectable()
 export class AuthService {
@@ -78,6 +80,47 @@ export class AuthService {
         id: user.id,
         username: user.username,
       },
+    };
+  }
+
+  async saveFavoriteCity(
+    userId: string,
+    favoriteCityDto: FavoriteCityDto,
+  ): Promise<{ message: string; favoriteCity: Record<string, any> | null }> {
+    const user = await this.usersRepository.findOne({
+      where: { id: userId },
+    });
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    user.favoriteCity = favoriteCityDto.favoriteCity || null;
+    await this.usersRepository.save(user);
+
+    return {
+      message: 'Favorite city saved successfully',
+      favoriteCity: user.favoriteCity,
+    };
+  }
+
+  async getUserWithFavoriteCity(userId: string): Promise<{
+    id: string;
+    username: string;
+    favoriteCity: Record<string, any> | null;
+  }> {
+    const user = await this.usersRepository.findOne({
+      where: { id: userId },
+    });
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    return {
+      id: user.id,
+      username: user.username,
+      favoriteCity: user.favoriteCity,
     };
   }
 }
