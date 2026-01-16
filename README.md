@@ -15,9 +15,9 @@
 
 Este projeto demonstra a capacidade de construir uma aplicação web moderna de ponta a ponta, simulando desafios reais de engenharia de software, como processamento de dados em larga escala e interfaces responsivas.
 
-### 📷 Demonstração (Screenshot)
+### 📷 Demonstração
 
-Foo | Foo | Imagem Foo
+<video src="assets/github_presentation.mp4" controls muted></video>
 
 ### 🚀 O que este projeto entrega?
 
