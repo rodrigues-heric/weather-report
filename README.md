@@ -43,13 +43,13 @@ O projeto utiliza uma arquitetura híbrida de microserviços com **RabbitMQ** pa
 
 ```mermaid
 graph TD
-    Client[💻 Frontend (React + Vite)] -->|REST API| API[🛡️ Backend Gateway (NestJS)]
-    API -->|Autenticação| Auth[JWT Strategy]
-    API -->|Publica Evento| RMQ[🐇 RabbitMQ Cluster]
-
-    RMQ -->|Consome Dados| PyWorker[🐍 Python Worker (Ingestão/ETL)]
-    RMQ -->|Consome Jobs| GoWorker[🐹 Go Worker (Alta Concorrência)]
-
+    Client["💻 Frontend (React + Vite)"] -->|REST API| API["🛡️ Backend Gateway (NestJS)"]
+    API -->|Autenticação| Auth["JWT Strategy"]
+    API -->|Publica Evento| RMQ["🐇 RabbitMQ Cluster"]
+    
+    RMQ -->|Consome Dados| PyWorker["🐍 Python Worker (Ingestão/ETL)"]
+    RMQ -->|Consome Jobs| GoWorker["🐹 Go Worker (Alta Concorrência)"]
+    
     PyWorker --> DB[(Database)]
     GoWorker --> DB
 ```
