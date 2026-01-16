@@ -16,7 +16,7 @@
   "login": {
     "title": "Login na Sua Conta",
     "description": "Por favor, insira suas credenciais para acessar sua conta",
-    "email": "Email",
+    "email": "Usuário",
     "emailPlaceholder": "seu_usuario",
     "password": "Senha",
     "submit": "Entrar",
