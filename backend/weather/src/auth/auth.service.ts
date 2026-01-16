@@ -11,6 +11,7 @@ import * as bcrypt from 'bcrypt';
 import { User } from './entities/user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { FavoriteCityDto } from './dto/favorite-city.dto';
+import * as amqp from 'amqplib';
 
 @Injectable()
 export class AuthService {
@@ -97,11 +98,34 @@ export class AuthService {
 
     user.favoriteCity = favoriteCityDto.favoriteCity || null;
     await this.usersRepository.save(user);
+    this.sendCityToQueue(user, userId);
 
     return {
       message: 'Favorite city saved successfully',
       favoriteCity: user.favoriteCity,
     };
+  }
+
+  private async sendCityToQueue(user: User, userId: string) {
+    if (!user.favoriteCity) return;
+
+    try {
+      const connection = await amqp.connect(
+        'amqp://guest:guest@localhost:5672',
+      );
+      const channel = await connection.createChannel();
+      await channel.assertQueue('favorite_cities', { durable: false });
+      const message = JSON.stringify({
+        city_name: user.favoriteCity.name,
+        user_id: userId,
+      });
+      channel.sendToQueue('favorite_cities', Buffer.from(message));
+      console.log('Mensagem enviada para RabbitMQ:', message);
+      await channel.close();
+      await connection.close();
+    } catch (error) {
+      console.error('Erro ao enviar mensagem para RabbitMQ:', error);
+    }
   }
 
   async getUserWithFavoriteCity(userId: string): Promise<{
