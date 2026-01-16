@@ -17,7 +17,7 @@ Este projeto demonstra a capacidade de construir uma aplicação web moderna de 
 
 ### 📷 Demonstração
 
-<video src="assets/github_presentation.mp4" controls muted></video>
+https://github.com/user-attachments/assets/b544c090-538b-4ae9-a380-d87b121e0fc5
 
 ### 🚀 O que este projeto entrega?
 
