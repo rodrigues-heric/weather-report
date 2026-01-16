@@ -137,3 +137,61 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# compiled output
+/backend/weather/dist
+/backend/weather/node_modules
+/backend/weather/build
+
+# Logs
+/backend/weatherlogs
+/backend/weather*.log
+/backend/weathernpm-debug.log*
+/backend/weatherpnpm-debug.log*
+/backend/weatheryarn-debug.log*
+/backend/weatheryarn-error.log*
+/backend/weatherlerna-debug.log*
+
+# OS
+/backend/weather.DS_Store
+
+# Tests
+/backend/weather/coverage
+/backend/weather/.nyc_output
+
+# IDEs and editors
+/backend/weather/.idea
+/backend/weather/.project
+/backend/weather/.classpath
+/backend/weather/.c9/
+/backend/weather/*.launch
+/backend/weather/.settings/
+/backend/weather/*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+/backend/weather/.vscode/*
+/backend/weather/!.vscode/settings.json
+/backend/weather/!.vscode/tasks.json
+/backend/weather/!.vscode/launch.json
+/backend/weather/!.vscode/extensions.json
+
+# dotenv environment variable files
+/backend/weather/.env
+/backend/weather/.env.development.local
+/backend/weather/.env.test.local
+/backend/weather/.env.production.local
+/backend/weather/.env.local
+
+# temp directory
+/backend/weather/.temp
+/backend/weather/.tmp
+
+# Runtime data
+/backend/weather/pids
+/backend/weather/*.pid
+/backend/weather/*.seed
+/backend/weather/*.pid.lock
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+/backend/weather/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json

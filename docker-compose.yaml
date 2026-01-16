@@ -1,0 +1,72 @@
+# START: docker-compose up -d
+# STOP: docker-compose down
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:6.0
+    container_name: meu-mongo-local
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    volumes:
+      - mongo_data:/data/db
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: weather-postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: weather_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: weather-rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  weather-api:
+    build:
+      context: ./data_processing
+      dockerfile: Dockerfile
+    container_name: weather-api
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_ENV: production
+    depends_on:
+      - mongo
+
+  go-worker:
+    build:
+      context: ./go-worker
+      dockerfile: Dockerfile
+    container_name: weather-go-worker
+    restart: always
+    depends_on:
+      - mongo
+      - rabbitmq
+
+volumes:
+  mongo_data:
+  postgres_data:

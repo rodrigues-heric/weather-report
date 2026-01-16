@@ -1,0 +1,133 @@
+{
+  "actions": {
+    "close": "Fechar"
+  },
+  "header": {
+    "hello": "Olá",
+    "logout": "Sair"
+  },
+  "language": {
+    "language": "Idioma",
+    "selectLanguage": "Selecionar Idioma",
+    "english": "Inglês",
+    "portuguese": "Português",
+    "noResults": "Nenhum resultado encontrado."
+  },
+  "login": {
+    "title": "Login na Sua Conta",
+    "description": "Por favor, insira suas credenciais para acessar sua conta",
+    "email": "Usuário",
+    "emailPlaceholder": "seu_usuario",
+    "password": "Senha",
+    "submit": "Entrar",
+    "forgotPassword": "Esqueceu a Senha?",
+    "register": "Cadastrar",
+    "loginButton": "Entrar",
+    "requiredFields": "Todos os campos são obrigatórios",
+    "errorMessage": "Erro ao fazer login. Por favor, tente novamente."
+  },
+  "register": {
+    "title": "Criar Conta",
+    "description": "Crie sua conta para começar",
+    "username": "Usuário",
+    "usernamePlaceholder": "seu_usuario",
+    "password": "Senha",
+    "confirmPassword": "Confirmar Senha",
+    "registerButton": "Cadastrar",
+    "alreadyHaveAccount": "Login",
+    "requiredFields": "Todos os campos são obrigatórios",
+    "passwordsNotMatch": "As senhas não coincidem",
+    "passwordMinLength": "A senha deve ter pelo menos 6 caracteres",
+    "errorMessage": "Erro ao criar conta. Por favor, tente novamente."
+  },
+  "week": {
+    "sunday": "Domingo",
+    "monday": "Segunda-feira",
+    "tuesday": "Terça-feira",
+    "wednesday": "Quarta-feira",
+    "thursday": "Quinta-feira",
+    "friday": "Sexta-feira",
+    "saturday": "Sábado"
+  },
+  "month": {
+    "january": "Janeiro",
+    "february": "Fevereiro",
+    "march": "Março",
+    "april": "Abril",
+    "may": "Maio",
+    "june": "Junho",
+    "july": "Julho",
+    "august": "Agosto",
+    "september": "Setembro",
+    "october": "Outubro",
+    "november": "Novembro",
+    "december": "Dezembro"
+  },
+  "mode": {
+    "theme": "Tema",
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema"
+  },
+  "search": {
+    "select": "Selecione uma cidade",
+    "placeholder": "Buscar cidade...",
+    "notFoundTitle": "Cidade não encontrada",
+    "notFoundDescription": "Não conseguimos localizar",
+    "checkSpelling": "Por favor, verifique a ortografia ou selecione uma cidade da lista.",
+    "ok": "Entendi"
+  },
+  "weather": {
+    "hourlyWeather": "Previsão por Hora",
+    "7DayForecast": "Previsão de 7 Dias",
+    "7DayVariation": "Variação em 7 Dias",
+    "feelsLike": "Sensação",
+    "details": "Detalhes do Clima",
+    "humidity": "Umidade",
+    "wind": "Vento",
+    "pressure": "Pressão",
+    "uvIndex": "Índice UV",
+    "visibility": "Visibilidade",
+    "sunrise": "Nascer do Sol",
+    "sunset": "Pôr do Sol",
+    "min": "Mínima",
+    "max": "Máxima"
+  },
+  "weatherConditions": {
+    "clear": "Céu limpo",
+    "mainlyClear": "Principalmente limpo",
+    "partiallyCloudy": "Parcialmente nublado",
+    "cloudy": "Nublado",
+    "fog": "Nevoeiro",
+    "rimeFog": "Nevoeiro com geada",
+    "lightDrizzle": "Garoa leve",
+    "drizzle": "Garoa moderada",
+    "heavyDrizzle": "Garoa pesada",
+    "lightRain": "Chuva leve",
+    "rain": "Chuva moderada",
+    "heavyRain": "Chuva pesada",
+    "lightSnow": "Neve leve",
+    "snow": "Neve moderada",
+    "heavySnow": "Neve pesada",
+    "lightShowers": "Pancadas de chuva leves",
+    "showers": "Pancadas de chuva moderadas",
+    "heavyShowers": "Pancadas de chuva pesadas",
+    "thunderstorm": "Tempestade",
+    "lightThunderstormWithHail": "Tempestade leve com granizo",
+    "thunderstormWithHail": "Tempestade forte com granizo"
+  },
+  "error": {
+    "title": "Um erro ocorreu",
+    "message": "Unable to fetch weather data. Please try again later.",
+    "ok": "Entendi"
+  },
+  "weekDays": {
+    "Sun": "Dom",
+    "Mon": "Seg",
+    "Tue": "Ter",
+    "Wed": "Qua",
+    "Thu": "Qui",
+    "Fri": "Sex",
+    "Sat": "Sáb"
+  }
+}

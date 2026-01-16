@@ -1,0 +1,133 @@
+{
+  "actions": {
+    "close": "Close"
+  },
+  "header": {
+    "hello": "Hello",
+    "logout": "Logout"
+  },
+  "language": {
+    "language": "Language",
+    "selectLanguage": "Select Language",
+    "english": "English",
+    "portuguese": "Portuguese",
+    "noResults": "No results found."
+  },
+  "login": {
+    "title": "Login to Your Account",
+    "description": "Please enter your credentials to access your account",
+    "email": "User",
+    "emailPlaceholder": "your_username",
+    "password": "Password",
+    "submit": "Login",
+    "forgotPassword": "Forgot Password?",
+    "register": "Sign Up",
+    "loginButton": "Login",
+    "requiredFields": "All fields are required",
+    "errorMessage": "Error logging in. Please try again."
+  },
+  "register": {
+    "title": "Create Account",
+    "description": "Create your account to get started",
+    "username": "Username",
+    "usernamePlaceholder": "your_username",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "registerButton": "Register",
+    "alreadyHaveAccount": "Sign In",
+    "requiredFields": "All fields are required",
+    "passwordsNotMatch": "Passwords do not match",
+    "passwordMinLength": "Password must be at least 6 characters",
+    "errorMessage": "Error creating account. Please try again."
+  },
+  "week": {
+    "sunday": "Sunday",
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday"
+  },
+  "month": {
+    "january": "January",
+    "february": "February",
+    "march": "March",
+    "april": "April",
+    "may": "May",
+    "june": "June",
+    "july": "July",
+    "august": "August",
+    "september": "September",
+    "october": "October",
+    "november": "November",
+    "december": "December"
+  },
+  "mode": {
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "search": {
+    "select": "Select a city",
+    "placeholder": "Search city...",
+    "notFoundTitle": "City not found",
+    "notFoundDescription": "We couldn't locate",
+    "checkSpelling": "Please check the spelling or select a city from the list.",
+    "ok": "OK"
+  },
+  "weather": {
+    "hourlyWeather": "Hourly Weather",
+    "7DayForecast": "7-Day Forecast",
+    "7DayVariation": "7-Day Variation",
+    "feelsLike": "Feels",
+    "details": "Weather Details",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "pressure": "Pressure",
+    "uvIndex": "UV Index",
+    "visibility": "Visibility",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset",
+    "min": "Min",
+    "max": "Max"
+  },
+  "weatherConditions": {
+    "clear": "Clear",
+    "mainlyClear": "Mainly Clear",
+    "partiallyCloudy": "Partially Cloudy",
+    "cloudy": "Cloudy",
+    "fog": "Fog",
+    "rimeFog": "Rime Fog",
+    "lightDrizzle": "Light Drizzle",
+    "drizzle": "Drizzle",
+    "heavyDrizzle": "Heavy Drizzle",
+    "lightRain": "Light Rain",
+    "rain": "Rain",
+    "heavyRain": "Heavy Rain",
+    "lightSnow": "Light Snow",
+    "snow": "Snow",
+    "heavySnow": "Heavy Snow",
+    "lightShowers": "Light Showers",
+    "showers": "Showers",
+    "heavyShowers": "Heavy Showers",
+    "thunderstorm": "Thunderstorm",
+    "lightThunderstormWithHail": "Light Thunderstorm with Hail",
+    "thunderstormWithHail": "Thunderstorm with Hail"
+  },
+  "error": {
+    "title": "An error occurred",
+    "message": "Unable to fetch weather data. Please try again later.",
+    "ok": "OK"
+  },
+  "weekDays": {
+    "Sun": "Sun",
+    "Mon": "Mon",
+    "Tue": "Tue",
+    "Wed": "Wed",
+    "Thu": "Thu",
+    "Fri": "Fri",
+    "Sat": "Sat"
+  }
+}
