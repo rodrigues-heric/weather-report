@@ -9,7 +9,7 @@ import {
 import { CityService } from './city.service';
 import { City } from './schemas/city.schema';
 import { CityFetchDto } from './dto/city-fetch.dto';
-import { JwtAuthGuard } from 'src/auth/auth.guard';
+import { JwtAuthGuard } from '../auth/auth.guard';
 
 @Controller('/city')
 export class CityController {
