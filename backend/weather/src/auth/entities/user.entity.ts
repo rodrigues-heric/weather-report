@@ -12,6 +12,7 @@ export class User {
   password: string;
 
   @Column({ default: () => 'CURRENT_TIMESTAMP' })
+  /* v8 ignore next */
   createdAt: Date;
 
   @Column('jsonb', { nullable: true })
