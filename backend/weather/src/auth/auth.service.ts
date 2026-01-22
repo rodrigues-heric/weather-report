@@ -16,8 +16,10 @@ import * as amqp from 'amqplib';
 @Injectable()
 export class AuthService {
   constructor(
+    /* v8 ignore next */
     private jwtService: JwtService,
     @InjectRepository(User)
+    /* v8 ignore next */
     private usersRepository: Repository<User>,
   ) {}
 

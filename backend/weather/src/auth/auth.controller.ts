@@ -1,3 +1,4 @@
+/** V8 ignore is necessary to prevent ghosting branches on coverage reports */
 import {
   Body,
   Controller,
@@ -17,10 +18,16 @@ const ONE_HOUR_MS = 60 * 60 * 1000;
 
 @Controller('/auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    /* v8 ignore next */
+    private readonly authService: AuthService,
+  ) {}
 
   @Post('/register')
-  public async register(@Body() createUserDto: CreateUserDto) {
+  public async register(
+    /* v8 ignore next */
+    @Body() createUserDto: CreateUserDto,
+  ) {
     return this.authService.register(createUserDto);
   }
 
@@ -32,6 +39,7 @@ export class AuthController {
 
   @Post('/login')
   public async login(
+    /* v8 ignore next */
     @Body() authDTO: CreateUserDto,
     @Res({ passthrough: true }) response: any,
   ) {
@@ -65,6 +73,7 @@ export class AuthController {
   @Patch('/favorite-city')
   public async saveFavoriteCity(
     @Req() req: any,
+    /* v8 ignore next */
     @Body() favoriteCityDto: FavoriteCityDto,
   ) {
     return this.authService.saveFavoriteCity(req.user.sub, favoriteCityDto);

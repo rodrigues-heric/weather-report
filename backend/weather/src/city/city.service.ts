@@ -8,7 +8,11 @@ import { CityFetchDto } from './dto/city-fetch.dto';
 
 @Injectable()
 export class CityService {
-  constructor(@InjectModel(City.name) private cityModel: Model<City>) {}
+  constructor(
+    @InjectModel(City.name)
+    /* v8 ignore next */
+    private cityModel: Model<City>,
+  ) {}
 
   private weatherApiUrl =
     process.env.WEATHER_API_URL || 'http://localhost:5000';
