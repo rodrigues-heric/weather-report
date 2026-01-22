@@ -19,6 +19,7 @@ export class AuthService {
     /* v8 ignore next */
     private jwtService: JwtService,
     @InjectRepository(User)
+    /* v8 ignore next */
     private usersRepository: Repository<User>,
   ) {}
 
