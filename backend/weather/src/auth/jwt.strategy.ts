@@ -1,3 +1,5 @@
+/** V8 ignore is necessary to prevent ghosting branches on coverage reports */
+
 import { Strategy } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
@@ -5,14 +7,13 @@ import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(private configService: ConfigService) {
+  constructor(
+    /* v8 ignore next */
+    private configService: ConfigService,
+  ) {
     super({
       jwtFromRequest: (req) => {
-        let token = null;
-
-        if (req && req.cookies) token = req.cookies['jwt'];
-
-        return token;
+        return req?.cookies?.['jwt'] ?? null;
       },
       ignoreExpiration: false,
       secretOrKey: configService.get<string>('JWT_KEY')!,

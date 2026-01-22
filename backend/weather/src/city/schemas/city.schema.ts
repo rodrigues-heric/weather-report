@@ -76,9 +76,11 @@ export class City extends Document {
   uvIndex: number;
 
   @Prop()
+  /* v8 ignore next */
   createdAt?: Date;
 
   @Prop()
+  /* v8 ignore next */
   updatedAt?: Date;
 
   @Prop({ type: [ForecastSchema], default: [] })
