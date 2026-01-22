@@ -115,4 +115,17 @@ describe('AuthController', () => {
       });
     });
   });
+
+  describe('logout()', () => {
+    it('should logout and clear the jwt cookie', async () => {
+      const mockRes = {
+        clearCookie: jest.fn().mockReturnThis(),
+      } as any;
+
+      const result = await authController.logout(mockRes);
+
+      expect(mockRes.clearCookie).toHaveBeenCalledWith('jwt');
+      expect(result).toEqual({ message: 'Logout successful' });
+    });
+  });
 });
