@@ -30,6 +30,15 @@ describe('CreateUserDto', () => {
       expect(errors[0].property).toBe('username');
     });
 
+    it('should fail if username is too long | Max length := 20', async () => {
+      dto.username = 'j'.repeat(21);
+      dto.password = 'password123';
+
+      const errors = await validate(dto);
+      expect(errors.length).toBeGreaterThan(0);
+      expect(errors[0].constraints).toHaveProperty('maxLength');
+    });
+
     it('should fail if username is not a string', async () => {
       (dto as any).username = 123;
       dto.password = 'password123';
@@ -47,6 +56,15 @@ describe('CreateUserDto', () => {
       const errors = await validate(dto);
       expect(errors.length).toBeGreaterThan(0);
       expect(errors[0].constraints).toHaveProperty('minLength');
+    });
+
+    it('should fail if password is too long | Max length := 50', async () => {
+      dto.username = 'john_doe';
+      dto.password = 'p'.repeat(51);
+
+      const errors = await validate(dto);
+      expect(errors.length).toBeGreaterThan(0);
+      expect(errors[0].constraints).toHaveProperty('maxLength');
     });
   });
 });
