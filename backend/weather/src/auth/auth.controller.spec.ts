@@ -3,6 +3,8 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './auth.guard';
 
+const ONE_HOUR_MS = 60 * 60 * 1000;
+
 describe('AuthController', () => {
   let authController: AuthController;
   let authService: AuthService;
@@ -10,6 +12,8 @@ describe('AuthController', () => {
   const mockAuthService = {
     register: jest.fn(),
     getUserWithFavoriteCity: jest.fn(),
+    login: jest.fn(),
+    validateUser: jest.fn(),
   };
 
   beforeEach(async () => {
@@ -73,6 +77,42 @@ describe('AuthController', () => {
         'test-123',
       );
       expect(result).toEqual(expectedResult);
+    });
+  });
+
+  describe('login()', () => {
+    it('should login a user and set a cookie', async () => {
+      const mockLoginDto = { username: 'test', password: 'test12345' };
+      const mockLoginData = { access_token: 'test-token' };
+
+      const mockRes = {
+        cookie: jest.fn().mockReturnThis(),
+      } as any;
+
+      mockAuthService.validateUser.mockResolvedValue(mockLoginDto);
+      mockAuthService.login.mockResolvedValue(mockLoginData);
+
+      const result = await authController.login(mockLoginDto, mockRes);
+
+      expect(authService.validateUser).toHaveBeenCalledWith(
+        mockLoginDto.username,
+        mockLoginDto.password,
+      );
+      expect(authService.login).toHaveBeenCalledWith(mockLoginDto);
+
+      expect(mockRes.cookie).toHaveBeenCalledWith(
+        'jwt',
+        'test-token',
+        expect.objectContaining({
+          httpOnly: true,
+          maxAge: ONE_HOUR_MS,
+        }),
+      );
+
+      expect(result).toEqual({
+        message: 'Login successful',
+        access_token: 'test-token',
+      });
     });
   });
 });
