@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './auth.guard';
+import { FavoriteCityDto } from './dto/favorite-city.dto';
 
 const ONE_HOUR_MS = 60 * 60 * 1000;
 
@@ -14,6 +15,7 @@ describe('AuthController', () => {
     getUserWithFavoriteCity: jest.fn(),
     login: jest.fn(),
     validateUser: jest.fn(),
+    saveFavoriteCity: jest.fn(),
   };
 
   beforeEach(async () => {
@@ -126,6 +128,43 @@ describe('AuthController', () => {
 
       expect(mockRes.clearCookie).toHaveBeenCalledWith('jwt');
       expect(result).toEqual({ message: 'Logout successful' });
+    });
+  });
+
+  describe('saveFavoriteCity()', () => {
+    it('should save favorite city with correct user id and data', async () => {
+      const userId = 'user-uuid-123';
+      const favoriteCityDto: FavoriteCityDto = {
+        favoriteCity: {
+          name: 'São Paulo',
+        },
+      };
+
+      const mockReq = {
+        user: {
+          sub: userId,
+        },
+      } as any;
+
+      const expectedResult = {
+        message: 'Favorite city saved successfully',
+        favoriteCity: {
+          name: 'São Paulo',
+        },
+      };
+
+      mockAuthService.saveFavoriteCity.mockResolvedValue(expectedResult);
+
+      const result = await authController.saveFavoriteCity(
+        mockReq,
+        favoriteCityDto,
+      );
+
+      expect(authService.saveFavoriteCity).toHaveBeenCalledWith(
+        userId,
+        favoriteCityDto,
+      );
+      expect(result).toEqual(expectedResult);
     });
   });
 });
